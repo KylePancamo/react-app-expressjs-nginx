@@ -87,6 +87,42 @@ app.post("/register", (req, res) => {
         }
     )
 });
+
+app.post('/signin', (req, res) => 
+{
+    const username = req.body.username;
+    const password = req.body.password;
+
+    db.query(
+        "SELECT * FROM account WHERE username = ?",
+        username,
+        (err, result) =>
+        {
+            if(err)
+            {
+                res.send({err: err})
+            }
+                
+            if (result.length > 0)
+            {
+                bcrypt.compare(password, result[0].password, (error, response) =>
+                {
+                    if(response)
+                    {
+                        res.send(result)
+                    } else
+                    {
+                        res.send({ message: "Incorrect username or password" })
+                    }
+                })
+            } else
+            {
+                res.send({ message: "Incorrect username" })
+            }
+        }
+    );
+})
+
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');

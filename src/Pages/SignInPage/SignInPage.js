@@ -1,24 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Axios from "axios";
 import './SignInPage.css';
 
-export default function Login()
+function SignIn()
 {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [loginStatus, setLoginStatus] = useState("");
+
+    const login = () =>
+    {
+        Axios.post("http://localhost:5000/signin", 
+        {
+            username: username,
+            password: password,
+        }).then((response) =>
+        {
+            if(response.data.message)
+            {
+                setLoginStatus(response.data.message);
+            } else
+            {
+                setLoginStatus(response.data[0].username);
+            }
+            
+        });
+    };
+
     return (
         <div className="signin-wrapper">
             <h1>Sign In</h1>
-            <form>
-                <label>
-                    <p>Username</p>
-                    <input type="text" />
-                </label>
-                <label>
-                    <p>Password</p>
-                    <input type="password" />
-                </label>
+                    <input 
+                        type="text"
+                        placeholder="Username..."
+                        onChange={(e) => 
+                        {
+                            setUsername(e.target.value);
+                        }} 
+                    />
+                
+                    <input 
+                        type="password"
+                        placeholder="Password..."
+                        onChange={(e) => 
+                        {
+                            setPassword(e.target.value);
+                        }}
+                    />
                 <div>
-                    <button type="submit">Submit</button>
+                    <button onClick={login}> Login </button>
                 </div>
-            </form>
+            <h1>{loginStatus}</h1>
         </div>
-    )
+    );
 }
+export default SignIn;
