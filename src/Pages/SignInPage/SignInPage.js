@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Axios from "axios";
 import './SignInPage.css';
+import Registration from '../RegistrationPage/RegistrationPage';
+import { Link } from "react-router-dom";
 
 function SignIn() {
     const [username, setUsername] = useState("");
@@ -46,6 +48,8 @@ function SignIn() {
                     <button onClick={login}> Login </button>
                 </div>
                 <h1>{loginStatus}</h1>
+                <h2>Don't have an account?</h2>
+                <Link to="/registration">Register</Link>
             </div>
         </div>
     );
