@@ -7,6 +7,13 @@
   text-align: center;
 }
 
+.image1{
+  position: relative;
+  right: 450px;
+  top: 100px;
+  border-radius: 100px;
+}
+
 .panel1 {
   height: 500px;
   font-family: 'Times New Roman', Times, serif;
@@ -29,6 +36,7 @@
 */
 .header2 {
   position: relative;
+  top: -350px;
   left: 55%;
   height: 500px;
   width: 40%;
@@ -41,6 +49,7 @@
 
 .panel1 button {
   position: relative;
+  top: -350px;
   left: 25%;
   width: 15%;
 }

@@ -60,7 +60,7 @@ function Registration() {
 					setPassword(event.target.value);
 				}}
 			/>
-			<label>email:</label>
+			<label>Email:</label>
 			<input type="text"
 				onChange={(event) => {
 					setEmail(event.target.value);
