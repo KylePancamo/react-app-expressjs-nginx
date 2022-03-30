@@ -6,7 +6,7 @@ function Product() {
     let manufacturer = "Stark Industries"
     let cost = 99.99;
     return (
-        <div className="page-background">
+        <div className="product-background">
             {/* create an overall panel, with header 2, the image, and the button inside of it */}
             <div className="panel1">
                 <div className="image1-panel">

@@ -41,7 +41,7 @@ function SignIn() {
     }, [])
 
     return (
-        <div className="page-background">
+        <div className="signin-background">
             <div className="signin-webpage">
                 <div className="signin-wrapper">
                     <h1><b><i>Sign In</i></b></h1>
