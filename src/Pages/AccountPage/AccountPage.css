@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-
-
 .body{
   /* height: 500%;
   width:500%; */
@@ -17,17 +15,21 @@
   height: 30px;
 }
 .a{
+  
   color: white;
   margin-right: 2em;
   text-decoration: none;
 
 }
 .container{
+  position: fixed;
+  left: 25%;
+  margin-top: 5%;
   max-width: 700px;
   width: 100%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   padding: 25px 30px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: blue;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
@@ -52,10 +54,8 @@
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-div.positioning{
-  margin-left: auto;
-    margin-right: auto;
-    width: 8em
+.positioning{
+  width: 8em;
 }
 form .user-details .input-box{
   margin-bottom: 15px;
