@@ -23,7 +23,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="App">
+      <div className="HomePage">
         <header><b>WorldWide Frames</b> - <i>See A Better World</i></header>
         <h2><i>Items on Sale</i></h2>
         <div className="Frames">
