@@ -8,11 +8,11 @@
 
 header {
   text-align: left;
-  background-image: url(../../images/oceanimage.jpg);
+  background-image: url(../../images/oceanimagedesktop.jpg);
   background-blend-mode: lighten;
   background-position: center;
   background-size: cover;
-  opacity: 1;
+  opacity: 90%;
   color: black;
   font-size: x-large;
   margin: none;
