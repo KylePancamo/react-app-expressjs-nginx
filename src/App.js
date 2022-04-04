@@ -4,7 +4,9 @@ import Home from "./Pages/HomePage/HomePage"
 import Axios from "axios";
 import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
+import Cart from "./Pages/ShoppingCart/ShoppingCart"
 import Account from "./Pages/AccountPage/AccountPage"
+
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
@@ -38,6 +40,7 @@ function App() {
                 height="50" />
             </Link>
             <Link to="/product">Product</Link>
+            <Link to="/cart">Shopping Cart</Link>
             {!loginState && (
               <>
                 <Link to="/registration">Register</Link>
@@ -45,9 +48,17 @@ function App() {
                 <Link to="/account">Account</Link>
               </>
             )}
+            <div className="Middleright">
+              <div className="searchbar">
+                <div className="fa fa-search"></div>
+                <input type="text" placeholder="Search..."></input>
+                <div className="fa fa-times"></div>
+              </div>
+            </div>
           </div>
         </div>
         <Switch>
+          <Route path="/cart" exact component={Cart} />
           <Route path="/registration" exact component={Registration} />
           <Route path="/product" exact component={Product} />
           <Route path="/login" exact component={Login} />
