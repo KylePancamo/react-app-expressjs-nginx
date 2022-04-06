@@ -37,7 +37,7 @@ const server = http.createServer(app);
 
 const db = mysql.createConnection({
   user: "nodejs",
-  host: "localhost",
+  host: "3.93.4.5",
   password: "nodejs",
   database: "account_information"
 });
