@@ -6,6 +6,7 @@ import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
 import Cart from "./Pages/ShoppingCart/ShoppingCart"
 import Account from "./Pages/AccountPage/AccountPage"
+import AdminPortal from "./Pages/AdminPortal/adminPortal"
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
@@ -40,6 +41,7 @@ function App() {
             </Link>
             <Link to="/product">Product</Link>
             <Link to="/cart">Shopping Cart</Link>
+            <Link to="/admin">Admin Portal</Link>
             {!loginState && (
               <>
                 <Link to="/registration">Register</Link>
@@ -62,6 +64,7 @@ function App() {
           <Route path="/product" exact component={Product} />
           <Route path="/login" exact component={Login} />
           <Route path="/account" exact component={Account}/>
+          <Route path="/admin" exact component={AdminPortal}/>
           <Route path="/" exact component={Home} />
         </Switch>
       </Router>
