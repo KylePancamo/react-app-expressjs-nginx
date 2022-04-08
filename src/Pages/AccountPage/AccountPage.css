@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-
 body
 {
   background-image:url("../../images/oceanimagedesktop.jpg");
+}
+.nav {
+  background-color: grey;
+  height: 30px;
+}
+.a{
+  
+  color: white;
+  margin-right: 2em;
+  text-decoration: none;
 }
 .container{
   position: fixed;
@@ -38,7 +47,6 @@ body
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-
 form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
@@ -137,6 +145,7 @@ form .user-details .input-box{
     width: 5px;
   }
 }
+
   @media(max-width: 459px){
   .container .content .category{
     flex-direction: column;

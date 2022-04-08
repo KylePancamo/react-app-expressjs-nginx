@@ -47,7 +47,7 @@ function Registration() {
 	};
 
 	return (
-		<div className="page-background">
+		<div className="registration-background">
 			<div className="information">
 				<label><b>Username:</b></label>
 				<input type="text"

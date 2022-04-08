@@ -1,4 +1,4 @@
-div.page-background{
+.product-background {
   position: fixed;
   background-image:url("../../images/oceanimagedesktop.jpg");
   background-blend-mode: soft-light;

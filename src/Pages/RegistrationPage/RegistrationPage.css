@@ -1,9 +1,8 @@
-div.page-background{
+.registration-background {
     position: fixed;
     background-image:url("../../images/oceanimagedesktop.jpg");
     background-blend-mode: soft-light;
     background-size: cover;
-    opacity: 95%;
     height: 100% !important;
     width: 100% !important;
   }
