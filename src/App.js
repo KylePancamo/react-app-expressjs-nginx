@@ -6,7 +6,6 @@ import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
 import Cart from "./Pages/ShoppingCart/ShoppingCart"
 import Account from "./Pages/AccountPage/AccountPage"
-
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"

@@ -28,7 +28,6 @@ function SignIn() {
                     window.location.reload(true);
                     history.push("/");
                 }
-
             });
     };
 
