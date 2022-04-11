@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css';
 function Home() {
   return (
     <div>
+      <div className="row">
       <div className="Topright">
         <div className="hotbar-button">
           <img src={cartImage} alt=""
@@ -14,6 +15,7 @@ function Home() {
             height="50"
           />
         </div>
+      </div>
       </div>
       <div className="Middleright">
         <div className="searchbar">

@@ -8,8 +8,7 @@ function Product() {
     return (
         <div className="product-background">
             {/* create an overall panel, with header 2, the image, and the button inside of it */}
-            <div className="panel1">
-                <div className="image1-panel">
+                <div className="container">
                     <div className="image1">
                         <img src={image}
                             alt=""
@@ -17,14 +16,13 @@ function Product() {
                             height="400" />
                     </div>
                 </div>
-                <div className="header2">
+                <div className="container">
                     <p><b>Name: </b> {name}</p>
                     <p><b>Manufacturer: </b>{manufacturer} </p>
                     <p><b>Cost: </b>{cost}</p>
+                    <button>Add to Cart</button>
                 </div>
-                <button>Add to Cart</button>
             </div>
-        </div>
     );
 }
 

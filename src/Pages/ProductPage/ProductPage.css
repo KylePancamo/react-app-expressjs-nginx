@@ -24,32 +24,18 @@
   top: 5%;
 }
 
-.panel1 {
-  height: 500px;
-  font-family: 'Times New Roman', Times, serif;
-  margin: 0;
-  padding: 0;
+@media (max-width: 584px){
+.container
+{
+  min-width: 100px;
+  margin: auto;
+  float:left;
 }
-
-
-
+}
 /*
 * percentage's are used to scale items according to browser resizing
 * can possibly use flex containers for buttons
 */
-.header2 {
-  position: relative;
-  top: -50%;
-  left: 50%;
-  height: 30%;
-  width: 40%;
-  background-color: rgb(211, 254, 255);
-  font-family: 'Times New Roman', Times, serif;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  border-radius: 10px;
-}
 
 .panel1 button {
   position: relative;

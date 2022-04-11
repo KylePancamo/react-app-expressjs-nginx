@@ -52,13 +52,7 @@ function App() {
                 <Link to="/account">Account</Link>
               </>
             )}
-            <div className="Middleright">
-              <div className="searchbar">
-                <div className="fa fa-search"></div>
-                <input type="text" placeholder="Search..."></input>
-                <div className="fa fa-times"></div>
-              </div>
-            </div>
+            
           </div>
         </div>
         <Switch>

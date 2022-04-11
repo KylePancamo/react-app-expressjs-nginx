@@ -5,6 +5,12 @@
   margin: 0;
   padding: 0;
 }
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  flex:1 0 21%;
+}
 
 header {
   text-align: left;
@@ -115,6 +121,7 @@ h3 {
   .searchbar {
     position: inherit;
     border-radius: 0;
+    flex-grow: 1;
     width: 98%;
   }
 }
