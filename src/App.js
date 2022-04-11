@@ -21,7 +21,8 @@ function App() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get("http://3.93.4.5:5000/signin").then((response) => {
+    Axios.get("/api/signin").then((response) => {
+      console.log(response);
       if (response.data.user) {
         setLoginState(true);
       }

@@ -15,7 +15,7 @@ const saltRounds = 10;
 app.use(express.json());
 app.use(cors({
     origin: ["http://ec2-3-93-4-5.compute-1.amazonaws.com"],
-    methods: ["GET", "POST"],
+    methods: "GET, POST",
     credentials: true,
 }));
 
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
     key: "userId",
-    secret: "test",
+    secret: "abc123",
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -51,7 +51,7 @@ db.connect((err) => {
     console.log("Connected to MySQL server.");
 });
 
-app.post("/register", (req, res) => {
+app.post("/api/register", (req, res) => {
 
     const username = req.body.username;
     const password = req.body.password;
@@ -104,7 +104,8 @@ app.post("/register", (req, res) => {
 });
 
 
-app.get("/signin", (req, res) => {
+app.get("/api/signin", (req, res) => {
+    console.log(req.session);
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {
@@ -112,7 +113,7 @@ app.get("/signin", (req, res) => {
     }
 })
 
-app.get("/register", (req, res) => {
+app.get("/api/register", (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
     } else {
@@ -120,7 +121,7 @@ app.get("/register", (req, res) => {
     }
 })
 
-app.post('/signin', (req, res) => {
+app.post('/api/signin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 

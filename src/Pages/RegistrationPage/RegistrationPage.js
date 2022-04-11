@@ -33,7 +33,7 @@ function Registration() {
 			return;
 		}
 
-		Axios.post("http://3.93.4.5:5000/register", data).then((response) => {
+		Axios.post("/api/register", data).then((response) => {
 			if (response.data.error) {
 				alert(response.data.error);
 				console.log("error!");

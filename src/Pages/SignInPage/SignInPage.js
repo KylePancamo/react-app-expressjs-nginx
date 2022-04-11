@@ -16,7 +16,7 @@ function SignIn() {
     let history = useHistory();
 
     const login = () => {
-        Axios.post("http://3.93.4.5:5000/signin",
+        Axios.post("/api/signin",
             {
                 username: username,
                 password: password,
@@ -25,14 +25,14 @@ function SignIn() {
                     setLoginStatus(response.data.message);
                 } else {
                     setLoginStatus(response.data[0].username);
-                    window.location.reload(true);
                     history.push("/");
+                    window.location.reload(true);
                 }
             });
     };
 
     useEffect(() => {
-        Axios.get("http://3.93.4.5:5000/signin").then((response) => {
+        Axios.get("/api/signin").then((response) => {
             if (response.data.user) {
                 history.push("/");
             }
