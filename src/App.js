@@ -4,7 +4,7 @@ import Home from "./Pages/HomePage/HomePage"
 import Axios from "axios";
 import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
-import Cart from "./Pages/ShoppingCart/ShoppingCart"
+import Cart from "./Pages/ShoppingPage/ShoppingPage"
 import Account from "./Pages/AccountPage/AccountPage"
 import "./GeneralStyles.css";
 import "./App.css"
@@ -39,7 +39,8 @@ function App() {
                 height="50" />
             </Link>
             <Link to="/product">Product</Link>
-            <Link to="/cart">Shopping Cart</Link>
+            <Link to="/cart">Shopping Page</Link>
+            <Link to="/admin">Admin Portal</Link>
             {!loginState && (
               <>
                 <Link to="/registration">Register</Link>

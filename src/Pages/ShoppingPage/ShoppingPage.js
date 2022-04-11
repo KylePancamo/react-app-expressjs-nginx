@@ -1,10 +1,11 @@
-import "./ShoppingCart.css"
+import "./ShoppingPage.css"
 
-function ShoppingCart() {
+function ShoppingPage() {
     return (
-        <div>hello</div>
-
+        <div className="ShoppingPage">
+            <h2>Shopping Cart</h2>
+        </div>
     );
 }
 
-export default ShoppingCart;
+export default ShoppingPage;

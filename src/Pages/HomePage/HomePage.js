@@ -25,7 +25,7 @@ function Home() {
 
       <div className="HomePage">
         <div className="HomeHeader">
-          <b>WorldWide Frames</b> - <i>See A Better World</i>
+          <header><b>WorldWide Frames</b> - <i>See A Better World</i></header>
         </div>
         <h2><i>Items on Sale</i></h2>
         <div className="Frames">
