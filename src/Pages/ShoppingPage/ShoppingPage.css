@@ -1,6 +1,8 @@
 .row {
     display: flex;
     justify-content: space-between;
+    flex-wrap:wrap;
+    flex:1 0 21%;
   }
   .row.center {
     align-items: center;
@@ -15,6 +17,8 @@
     padding: 1rem;
     margin: 0.5rem;
     border-radius: 0.5rem;
+    flex:1 0 21%;
+    background-color:rgb(117, 208, 238);
   }
   .text-right {
     text-align: right;
@@ -24,7 +28,7 @@
   }
   
   button.add {
-      background-color: #40c0f0;
+      background-color: green;
       width: 1.5rem;
   }
   button.remove {
