@@ -10,12 +10,13 @@ body {
 }
 
 .a {
+
   color: white;
   margin-right: 2em;
   text-decoration: none;
 }
 
-.container {
+.AccountPage .container {
   position: fixed;
   left: 25%;
   margin-top: 5%;
@@ -28,13 +29,13 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-.container .title {
+.AccountPage .container .title {
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
 
-.container .title::before {
+.AccountPage .container .title::before {
   content: "";
   position: fixed;
   left: auto;
@@ -145,7 +146,7 @@ form .button input:hover {
 }
 
 @media(max-width: 584px) {
-  .container {
+  .AccountPage .container {
     max-width: 100%;
   }
 
@@ -169,7 +170,7 @@ form .button input:hover {
 }
 
 @media(max-width: 459px) {
-  .container .content .category {
+  .AccountPage .container .content .category {
     flex-direction: column;
   }
 
