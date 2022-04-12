@@ -6,6 +6,8 @@ import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
 import Cart from "./Pages/ShoppingPage/ShoppingPage"
 import Account from "./Pages/AccountPage/AccountPage"
+import Admin from "./Pages/AdminPortal/adminPortal"
+import OrderHistory from "./Pages/OrderHistory/OrderHistory.js"
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
@@ -42,6 +44,7 @@ function App() {
             <Link to="/product">Product</Link>
             <Link to="/cart">Shopping Page</Link>
             <Link to="/admin">Admin Portal</Link>
+            <Link to="/order-history">Order History</Link>
             {!loginState && (
               <>
                 <Link to="/registration">Register</Link>
@@ -59,6 +62,7 @@ function App() {
           </div>
         </div>
         <Switch>
+          <Route path="/order-history" exact component={OrderHistory} />
           <Route path="/cart" exact component={Cart} />
           <Route path="/registration" exact component={Registration} />
           <Route path="/product" exact component={Product} />

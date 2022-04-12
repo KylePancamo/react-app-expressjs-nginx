@@ -121,7 +121,20 @@ app.get("/api/register", (req, res) => {
     }
 })
 
-app.post('/api/signin', (req, res) => {
+app.get("/api/orders", (req, res) => {
+    db.query(
+        "SELECT * FROM order_information",
+        (err, result) => {
+            if (err) {
+                res.send({ err: err })
+            }
+            res.send(result);
+        }
+    );
+
+})
+
+app.post('/signin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 

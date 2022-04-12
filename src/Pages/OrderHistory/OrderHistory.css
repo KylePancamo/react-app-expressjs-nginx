@@ -1,0 +1,14 @@
+.order-list {
+    padding: 2rem;
+}
+
+.order-list .tables {
+    text-align: left;
+    background-color: green;
+    color: white;
+    border-spacing: 10px;
+}
+
+.fa-info-circle{
+    color: aquamarine
+}
