@@ -8,6 +8,9 @@ import Cart from "./Pages/ShoppingPage/ShoppingPage"
 import Account from "./Pages/AccountPage/AccountPage"
 import Admin from "./Pages/AdminPortal/adminPortal"
 import OrderHistory from "./Pages/OrderHistory/OrderHistory.js"
+import DiscountCode from "./Pages/DiscountCodePage/DiscountCodePage"
+import AddProduct from "./Pages/AddProductPage/AddProductPage";
+import UpdateProduct from "./Pages/UpdateProductPage/UpdateProductPage";
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
@@ -20,6 +23,7 @@ import {
 } from "react-router-dom";
 function App() {
   const [loginState, setLoginState] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -27,6 +31,10 @@ function App() {
       console.log(response);
       if (response.data.user) {
         setLoginState(true);
+        if(response.data.user[0].username == "admin")
+        {
+          setIsAdmin(true);
+        }
       }
     })
   }, [])
@@ -43,13 +51,17 @@ function App() {
             </Link>
             <Link to="/product">Product</Link>
             <Link to="/cart">Shopping Page</Link>
-            <Link to="/admin">Admin Portal</Link>
             <Link to="/order-history">Order History</Link>
             {!loginState && (
               <>
                 <Link to="/registration">Register</Link>
                 <Link to="/login">Sign In</Link>
                 <Link to="/account">Account</Link>
+              </>
+            )}
+            {loginState && isAdmin &&(
+              <>
+                <Link to="/admin">Admin Portal</Link>
               </>
             )}
             
@@ -62,6 +74,10 @@ function App() {
           <Route path="/product" exact component={Product} />
           <Route path="/login" exact component={Login} />
           <Route path="/account" exact component={Account}/>
+          <Route path="/admin" exact component={Admin}/>
+          <Route path="/discountcode" exact component={DiscountCode}/>
+          <Route path="/addproduct" exact component={AddProduct}/>
+          <Route path="/updateproduct" exact component={UpdateProduct}/>
           <Route path="/" exact component={Home} />
         </Switch>
       </Router>

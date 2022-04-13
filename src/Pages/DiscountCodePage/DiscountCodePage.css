@@ -1,0 +1,30 @@
+.discountcode-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 350px;
+    left: 39%;
+    top: 30%;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+  
+  .discountcode-container input {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: 5px;
+    border-radius: 10px;
+  }
+
+  .discountcode-container select {
+    width: 250px;
+    height: 100px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin: 5px;
+    border-radius: 10px;
+  }
