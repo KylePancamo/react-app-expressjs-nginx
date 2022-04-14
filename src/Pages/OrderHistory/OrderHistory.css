@@ -9,14 +9,35 @@
 
 .order-list .tables {
     text-align: left;
-    background-color: green;
+    border-radius: 10px;
+    background-color: cadetblue;
     color: white;
     border-spacing: 10px;
+    margin-left: 10px;
 }
 .order-list th {
     text-align: center;
 }
 
-.fa-info-circle{
+.fa-info-circle {
     color: aquamarine
+}
+
+thead button {
+    font-family: inherit;
+    font-weight: 700;
+    padding: 0.3em;
+    min-width: max-content;
+}
+
+thead button.ascending::after {
+    content: '⬇️';
+    display: inline-block;
+    margin-left: 1em;
+}
+
+thead button.descending::after {
+    content: '⬆️';
+    display: inline-block;
+    margin-left: 1em;
 }

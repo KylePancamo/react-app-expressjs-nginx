@@ -128,9 +128,49 @@ app.get("/api/orders", (req, res) => {
             if (err) {
                 res.send({ err: err })
             }
-            res.send(result);
+            let order_information = result;
+            let orderIds = []
+            result.map(index => {
+                orderIds.push(index.order_num);
+            })
+
+            db.query(
+                "SELECT * FROM orders WHERE `order_num` IN (?)",
+                [orderIds],
+                (err, orders_table) => {
+                    if (err) {
+                        res.send( {err: err})
+                    }
+                    let orders = orders_table;
+                    let itemIds = [];
+                    let orderIds = [];
+                    
+                    orders_table.map(index => {
+                        itemIds.push(index.item_id);
+                    })
+                    
+                    db.query(
+                        "SELECT * FROM item_template WHERE `id` IN (?)",
+                        [itemIds],
+                        (err, itemInfo) => {
+                            if (err) {
+                                res.send( {err: err })
+                            }
+
+                            let data = {
+                                order_information,
+                                itemInfo,
+                                orders,
+                            };
+
+                            res.send(data);
+                        }
+                    )
+                }
+            )
         }
     );
+})
 
 })
 
