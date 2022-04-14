@@ -5,6 +5,7 @@ export default function Product(props) {
   return (
     <div className="products">
       <table>
+        <thead>
           <tr>
             <th>
               {product.item_name}
@@ -13,6 +14,7 @@ export default function Product(props) {
               {product.item_description}
             </th>
           </tr>
+        </thead>
         <tbody>
           <tr>
             <td>
@@ -24,10 +26,13 @@ export default function Product(props) {
               Product Id: {product.id}
             </td>
           </tr>
+          <tr>
+            <td>
+              <button onClick={() => onAdd(product)}>Add To Cart</button>
+            </td>
+          </tr>
         </tbody>
-        <div>
-          <button onClick={() => onAdd(product)}>Add To Cart</button>
-        </div>
+
       </table>
     </div>
 
