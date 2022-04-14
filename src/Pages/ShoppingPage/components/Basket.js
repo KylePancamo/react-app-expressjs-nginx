@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkout from './Checkout.js'
+import Axios from 'axios'
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,12 +7,27 @@ import {
   Link
 } from "react-router-dom";
 
+import { useState } from 'react';
+
 export default function Basket(props) {
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, onAdd, onRemove, setCartItems } = props;
+  console.log(props);
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.item_price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
+  const checkOut = () => {
+    if (cartItems.length != 0) {
+      /*Axios.post("http://localhost:5000/checkout", cartItems).then((response) => {
+
+      })*/
+      console.log("checkout cleared");
+      setCartItems([])
+      
+    }
+  }
+
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -64,15 +79,9 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-                <Link 
-                className="btn btn-primary" 
-                to={{
-                  pathname: "/checkout",
-                  state: {cartItems},
-                }}
-                >
-                  Checkout
-                </Link>
+                <button onClick={checkOut}>
+                  Place Order
+                </button>
             </div>
           </>
         )}

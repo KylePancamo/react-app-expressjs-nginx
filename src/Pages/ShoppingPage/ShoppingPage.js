@@ -18,7 +18,6 @@ function ShoppingPage() {
 
     })
   }, []);
-  console.log(products);
   //const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
@@ -54,7 +53,8 @@ function ShoppingPage() {
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}
-          onRemove={onRemove}></Basket>
+          onRemove={onRemove}
+          setCartItems={setCartItems}></Basket>
       </div>
     </div>
   );

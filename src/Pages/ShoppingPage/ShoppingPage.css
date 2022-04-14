@@ -61,8 +61,8 @@ button.badge {
   width: 1.5rem;
 }
 
-.products button {
-  width: fit-content;
+.products td button {
+  width: max-content;
 }
 
 .products table {
@@ -78,13 +78,15 @@ button.badge {
 .products table tr {
   display: flex;
   flex-wrap: nowrap;
+  height: 50%;
 }
 
 .products table th {
   width: 50%;
-  
+  height: 8vh;
 }
 
 .products table td {
   word-break: break-all;
+  
 }
