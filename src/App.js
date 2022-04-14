@@ -31,7 +31,7 @@ function App() {
       console.log(response);
       if (response.data.user) {
         setLoginState(true);
-        if(response.data.user[0].username == "admin")
+        if(response.data.user.username == "admin")
         {
           setIsAdmin(true);
         }
