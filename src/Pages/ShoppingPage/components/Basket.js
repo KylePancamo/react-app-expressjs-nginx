@@ -1,4 +1,11 @@
 import React from 'react';
+import Checkout from './Checkout.js'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
@@ -57,9 +64,15 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-              <button onClick={() => alert('Implement Checkout!')}>
-                Checkout
-              </button>
+                <Link 
+                className="btn btn-primary" 
+                to={{
+                  pathname: "/checkout",
+                  state: {cartItems},
+                }}
+                >
+                  Checkout
+                </Link>
             </div>
           </>
         )}

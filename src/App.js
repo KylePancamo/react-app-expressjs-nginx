@@ -11,6 +11,7 @@ import OrderHistory from "./Pages/OrderHistory/OrderHistory.js"
 import DiscountCode from "./Pages/DiscountCodePage/DiscountCodePage"
 import AddProduct from "./Pages/AddProductPage/AddProductPage";
 import UpdateProduct from "./Pages/UpdateProductPage/UpdateProductPage";
+import Checkout from './Pages/ShoppingPage/components/Checkout.js';
 import "./GeneralStyles.css";
 import "./App.css"
 import home from "../src/images/homebutton.png"
@@ -21,6 +22,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage";
 function App() {
   const [loginState, setLoginState] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -68,6 +70,7 @@ function App() {
           </div>
         </div>
         <Switch>
+          <Route path="/checkout" exact component={Checkout} />
           <Route path="/order-history" exact component={OrderHistory} />
           <Route path="/cart" exact component={Cart} />
           <Route path="/registration" exact component={Registration} />
