@@ -1,5 +1,10 @@
-.order-list {
-    padding: 2rem;
+.order-list {}
+
+.order-list .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 21%;
 }
 
 .order-list .tables {
@@ -7,6 +12,9 @@
     background-color: green;
     color: white;
     border-spacing: 10px;
+}
+.order-list th {
+    text-align: center;
 }
 
 .fa-info-circle{
