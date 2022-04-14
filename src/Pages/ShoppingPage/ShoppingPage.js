@@ -3,11 +3,23 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Basket from './components/Basket';
 import data from './data';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Axios from "axios";
 
 function ShoppingPage() {
-    
-    const { products } = data;
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:5000/get-items").then((response) => {
+      if (response.data) {
+        setProducts(response.data.itemList);
+      }
+
+    })
+  }, []);
+  console.log(products);
+  //const { products } = data;
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -34,18 +46,18 @@ function ShoppingPage() {
     }
   };
 
-    return (
-        <div className="ShoppingPage">
-            <h2>Browse Products</h2>
-            <div className="row">
-            <Main products={products} onAdd={onAdd}></Main>
-            <Basket
-             cartItems={cartItems}
-             onAdd={onAdd}
-             onRemove={onRemove}></Basket>
-            </div>
-        </div>
-    );
+  return (
+    <div className="ShoppingPage">
+      <h2>Browse Products</h2>
+      <div className="row">
+        <Main products={products} onAdd={onAdd}></Main>
+        <Basket
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}></Basket>
+      </div>
+    </div>
+  );
 }
 
 export default ShoppingPage;

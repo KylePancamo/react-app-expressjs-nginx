@@ -172,6 +172,16 @@ app.get("/api/orders", (req, res) => {
     );
 })
 
+app.get("/get-items", (req, res) => {
+    db.query(
+        "SELECT * FROM item_template",
+        (err, items) => {
+            if (err) {
+                res.send({ err: err })
+            }
+            res.send({itemList: items});
+        }
+    );
 })
 
 app.post('/signin', (req, res) => {

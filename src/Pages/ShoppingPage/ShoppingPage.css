@@ -1,43 +1,90 @@
 .row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-    flex:1 0 21%;
-  }
-  .row.center {
-    align-items: center;
-  }
-  .col-1 {
-    flex: 1;
-  }
-  .col-2 {
-    flex: 2;
-  }
-  .block {
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 0.5rem;
-    flex:1 0 21%;
-    background-color:rgb(117, 208, 238);
-  }
-  .text-right {
-    text-align: right;
-  }
-  img.small {
-    max-height: 8rem;
-  }
+  display: flex;
+  justify-content: space-around;
+  flex: 1 0 21%;
+  margin: 10px;
+}
+
+.row.center {
+  align-items: center;
+}
+
+.col-1 {
+  flex: 1;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.block {
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  flex: 1 0 21%;
+  background-color: rgb(117, 208, 238);
+}
+
+.text-right {
+  text-align: right;
+}
+
+img.small {
+  max-height: 8rem;
+}
+
+button.add {
+  background-color: aliceblue;
+  border-radius: 3px;
+  min-width: fit-content;
+}
+button.add:hover {
+  color: green;
+  background-color: aliceblue;
+}
+
+button.remove {
+  border-radius: 3px;
+  background-color:aliceblue;
+  min-width: fit-content;
+}
+
+button.remove:hover {
+  color: red;
+  background-color: aliceblue;
+}
+
+button.badge {
+  background-color: #f04040;
+  border: none;
+  color: #11ff00;
+  width: 1.5rem;
+}
+
+.products button {
+  width: fit-content;
+}
+
+.products table {
+  text-align: left;
+  border-spacing: 0px;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  width: 320px;
+}
+
+.products table tr {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.products table th {
+  width: 50%;
   
-  button.add {
-      background-color: green;
-      width: 1.5rem;
-  }
-  button.remove {
-      background-color: #f04040;
-      width: 1.5rem;
-  }
-  button.badge {
-      background-color: #f04040;
-      border: none;
-      color: #11ff00;
-      width: 1.5rem;
-    }
+}
+
+.products table td {
+  word-break: break-all;
+}
