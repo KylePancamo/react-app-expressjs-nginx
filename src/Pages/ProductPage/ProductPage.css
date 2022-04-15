@@ -1,5 +1,6 @@
 .product-background {
-  position: fixed;
+  overflow:hidden;
+  position:fixed;
   background-image:url("../../images/oceanimagedesktop.jpg");
   background-blend-mode: soft-light;
   background-size: cover;
@@ -7,35 +8,45 @@
   width: 100% !important;
 }
 
-
-.image1-panel{
-  position: relative;
-  background-color: aqua;
-  height: 90%;
-  width: 30%;
-  left: 10%;
-  top: 20%;
-  border-radius: 10px;
-}
-
-.image1{
-  position: relative;
-  left: 6%;
-  top: 5%;
-}
-
-@media (max-width: 584px){
-.container
+.ProductPage
 {
-  min-width: 100px;
+  margin: auto;
+}
+
+.ProductPage .container1
+{
+  position:absolute;
+  padding: 1%;
   margin: auto;
   float:left;
+  border-color: solid black;
+  left:10%;
+  top:10%;
+  border-radius: 10px;
+  background-color: white;
+  
 }
+
+.ProductPage .container2
+{
+  position:absolute;
+  margin: auto;
+  float:right;
+  right: 10%;
+  top:10%;
+  padding:5%;
+  border-radius: 10px;
+  background-color: white;
 }
 /*
 * percentage's are used to scale items according to browser resizing
 * can possibly use flex containers for buttons
 */
+.ProductPage .container1 .img  {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .panel1 button {
   position: relative;
