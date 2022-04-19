@@ -11,7 +11,10 @@ export default function Product(props) {
               {product.item_name}
             </th>
             <th>
-              {product.item_description}
+              <img 
+              src={product.pathname}
+              alt="Glasses"
+              width={100}/>
             </th>
           </tr>
         </thead>
