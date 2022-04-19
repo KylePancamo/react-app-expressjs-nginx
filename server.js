@@ -122,48 +122,30 @@ app.get("/api/register", (req, res) => {
 })
 
 app.get("/api/orders", (req, res) => {
+    let account_id = req.session.user.account_id;
     db.query(
-        "SELECT orders.order_num, item_template.id, item_template.item_name, item_template.item_description, item_template.item_price FROM orders INNER JOIN item_template ON orders.item_id=item_template.id",
+        `SELECT
+            account.account_id,
+            order_history.order_num,
+            orders.item_id,
+            item_template.item_name,
+            item_template.item_description,
+            item_template.item_price
+        FROM order_history
+        JOIN account
+            ON account.account_id = order_history.cust_id
+        JOIN orders
+            ON orders.order_num = order_history.order_num
+        JOIN item_template
+            ON orders.item_id = item_template.id
+        WHERE account.account_id = ?`,
+        account_id,
         (err, result) => {
             if (err) {
                 res.send({ err: err })
             }
-            
-            
+
             res.send(result);
-
-            /*db.query(
-                "SELECT * FROM orders WHERE `order_num` IN (?)",
-                [orderIds],
-                (err, orders_table) => {
-                    if (err) {
-                        res.send( {err: err})
-                    }
-                    let orders = orders_table;
-                    let itemIds = [];
-                    let orderIds = [];
-                    
-                    orders_table.map(index => {
-                        itemIds.push(index.item_id);
-                    })
-                    
-                    db.query(
-                        "SELECT * FROM item_template WHERE `id` IN (?)",
-                        [itemIds],
-                        (err, itemInfo) => {
-                            if (err) {
-                                res.send( {err: err })
-                            }
-
-                            let data = {
-                                order_information,
-                                itemInfo,
-                                orders,
-                            };
-
-                            res.send(data);
-                        }
-                    )*/
         }
     );
 })
@@ -175,7 +157,7 @@ app.get("/get-items", (req, res) => {
             if (err) {
                 res.send({ err: err })
             }
-            res.send({itemList: items});
+            res.send({ itemList: items });
         }
     );
 })
@@ -196,7 +178,7 @@ app.post('/signin', (req, res) => {
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     if (response) {
                         req.session.user = result[0];
-                        console.log(req.session.user)
+                        //console.log(req.session.user)
                         res.send(result)
                     } else {
                         res.send({ message: "Incorrect username or password" })

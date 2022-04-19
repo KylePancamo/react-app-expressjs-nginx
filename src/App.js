@@ -25,19 +25,27 @@ import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage";
 function App() {
   const [loginState, setLoginState] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userInfo, setUserInfo] = useState();
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
     Axios.get("/api/signin").then((response) => {
-      console.log(response);
       if (response.data.user) {
-        setLoginState(true);
-        if(response.data.user.username == "admin")
-        {
+        localStorage.setItem('login', JSON.stringify("true"));
+
+        setUserInfo(response.data.user);
+        if (response.data.user.username == "admin") {
           setIsAdmin(true);
         }
       }
+      else {
+        localStorage.setItem('login', JSON.stringify("false"));
+      }
+    }).catch((err) => {
+      console.log(err);
+      localStorage.setItem('login', JSON.stringify("false"));
     })
+
   }, [])
 
   return (
@@ -53,32 +61,32 @@ function App() {
             <Link to="/product">Product</Link>
             <Link to="/cart">Shopping Page</Link>
             <Link to="/order-history">Order History</Link>
-            {!loginState && (
+            {JSON.parse(localStorage.getItem('login')) === "false" && (
               <>
                 <Link to="/registration">Register</Link>
                 <Link to="/login">Sign In</Link>
                 <Link to="/account">Account</Link>
               </>
             )}
-            {loginState && isAdmin &&(
+            {JSON.parse(localStorage.getItem('login')) == "admin" && isAdmin && (
               <>
                 <Link to="/admin">Admin Portal</Link>
               </>
             )}
-            
+
           </div>
         </div>
         <Switch>
-          <Route path="/order-history" exact component={OrderHistory} />
+          <Route exact path="/order-history" component={() => <OrderHistory />} />
           <Route path="/cart" exact component={Cart} />
           <Route path="/registration" exact component={Registration} />
           <Route path="/product" exact component={Product} />
           <Route path="/login" exact component={Login} />
-          <Route path="/account" exact component={Account}/>
-          <Route path="/admin" exact component={Admin}/>
-          <Route path="/discountcode" exact component={DiscountCode}/>
-          <Route path="/addproduct" exact component={AddProduct}/>
-          <Route path="/updateproduct" exact component={UpdateProduct}/>
+          <Route path="/account" exact component={Account} />
+          <Route path="/admin" exact component={Admin} />
+          <Route path="/discountcode" exact component={DiscountCode} />
+          <Route path="/addproduct" exact component={AddProduct} />
+          <Route path="/updateproduct" exact component={UpdateProduct} />
           <Route path="/" exact component={Home} />
         </Switch>
       </Router>

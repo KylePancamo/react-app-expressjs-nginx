@@ -3,24 +3,33 @@ import Axios from "axios";
 import React, { useState, useEffect, useMemo } from 'react';
 import "./OrderHistory.css"
 import 'font-awesome/css/font-awesome.min.css';
+import { useHistory, Redirect, Route } from 'react-router-dom'
 
 function OrderHistory() {
+    const history = useHistory();
+
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem('login')) === "true") {
+            Axios.get("/api/orders").then((response) => {
+                console.log(response.data);
+                if (response.data) {
+                    setItemInfo(response.data);
+                }
+            })
+        }
+        else {
+            alert("Please login!");
+            history.push("/")
+            window.location.reload(false);
+        }
+    }, [localStorage.getItem('login')]);
+
 
     const [orderInfo, setOrderInfo] = useState([]);
     const [itemInfo, setItemInfo] = useState([]);
     const [orders, setOrders] = useState([]);
-
-
-    useEffect(() => {
-        Axios.get("/api/orders").then((response) => {
-            if (response.data) {
-                setItemInfo(response.data);
-            }
-
-        })
-    }, []);
-
     const useSortableData = (items, config = { key: 'null', direction: 'null' }) => {
+
         const [sortedConfig, setSortedConfig] = useState(config);
 
         const sortedItems = useMemo(() => {
@@ -62,58 +71,6 @@ function OrderHistory() {
         <div className="order-list">
             <div className="container">
                 <table className="tables">
-                    <caption>Order History</caption>
-                    <thead>
-                        <tr className="tr">
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('order_num')}
-                                    className={getClassNamesFor('order_num')}>
-                                    Order Id
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('quantity')}
-                                    className={getClassNamesFor('quantity')}>
-                                    Quantity
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('total_price')}
-                                    className={getClassNamesFor('total_price')}>
-                                    Total Price
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            items.map(index => {
-                                return (
-                                    <tr key={index.item_id}>
-                                        <td>{index.order_num}</td>
-                                        <td>{index.quantity}</td>
-                                        <td>{index.total_price}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                    <tbody>
-                        {
-                            !items.length &&
-                            <>
-                                <div className="fa fa-info-circle" /> No orders have been placed
-                            </>
-                        }
-                    </tbody>
-                </table>
-                <table className="tables">
                     <caption>Item History</caption>
                     <thead>
                         <tr className="tr">
@@ -122,7 +79,7 @@ function OrderHistory() {
                                     type="button"
                                     onClick={() => requestSort('order_num')}
                                     className={getClassNamesFor('order_num')}>
-                                    Order Id
+                                    Order Id:
                                 </button>
                             </th>
                             <th>
@@ -163,9 +120,9 @@ function OrderHistory() {
                         {
                             items.map(index => {
                                 return (
-                                    <tr key={index.id}>
+                                    <tr key={index.item_id}>
                                         <td>{index.order_num}</td>
-                                        <td>{index.id}</td>
+                                        <td>{index.item_id}</td>
                                         <td>{index.item_name}</td>
                                         <td>{index.item_description}</td>
                                         <td>{index.item_price}</td>
