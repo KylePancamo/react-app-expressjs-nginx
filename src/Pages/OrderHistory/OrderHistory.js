@@ -3,10 +3,11 @@ import Axios from "axios";
 import React, { useState, useEffect, useMemo } from 'react';
 import "./OrderHistory.css"
 import 'font-awesome/css/font-awesome.min.css';
-import { useHistory, Redirect, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-function OrderHistory() {
-    const history = useHistory();
+function OrderHistory(props) {
+
+    console.log(props);
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('login')) === "true") {
@@ -16,11 +17,6 @@ function OrderHistory() {
                     setItemInfo(response.data);
                 }
             })
-        }
-        else {
-            alert("Please login!");
-            history.push("/")
-            window.location.reload(false);
         }
     }, [localStorage.getItem('login')]);
 
@@ -129,6 +125,9 @@ function OrderHistory() {
                                     </tr>
                                 )
                             })
+                        }
+                        {JSON.parse(localStorage.getItem('login')) === "false" && 
+                            <Redirect to={{alert: "Please login to view your orders!"}}/>
                         }
                     </tbody>
                     <tbody>

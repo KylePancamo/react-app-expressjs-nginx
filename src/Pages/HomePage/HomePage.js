@@ -4,7 +4,13 @@ import React from "react";
 import cartImage from "../../images/cartimage.png"
 import 'font-awesome/css/font-awesome.min.css';
 
-function Home() {
+function Home(props) {
+
+  if (props.location.alert) {
+    alert(props.location.alert)
+    props.location.alert="";
+  }
+
   return (
     <div>
       <div className="row">

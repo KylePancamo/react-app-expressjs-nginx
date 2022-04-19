@@ -77,7 +77,7 @@ function App() {
           </div>
         </div>
         <Switch>
-          <Route exact path="/order-history" component={() => <OrderHistory />} />
+          <Route path="/order-history" component={() => <OrderHistory />} />
           <Route path="/cart" exact component={Cart} />
           <Route path="/registration" exact component={Registration} />
           <Route path="/product" exact component={Product} />
@@ -87,7 +87,8 @@ function App() {
           <Route path="/discountcode" exact component={DiscountCode} />
           <Route path="/addproduct" exact component={AddProduct} />
           <Route path="/updateproduct" exact component={UpdateProduct} />
-          <Route path="/" exact component={Home} />
+          <Route path="/" 
+          render = {(props) => <Home {...props} />} />
         </Switch>
       </Router>
     </div>
