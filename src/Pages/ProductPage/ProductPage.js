@@ -8,9 +8,9 @@ function Product() {
     return (
         <div className="product-background">
             <div className="ProductPage">
-            {/* create an overall panel, with header 2, the image, and the button inside of it */}
+                {/* create an overall panel, with header 2, the image, and the button inside of it */}
                 <div className="container1">
-                        <img src={image}/>
+                    <img src={image} />
                 </div>
                 <div className="container2">
                     <p><b>Names: </b> {name}</p>

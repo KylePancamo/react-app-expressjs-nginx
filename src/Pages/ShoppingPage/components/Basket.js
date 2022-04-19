@@ -24,7 +24,6 @@ export default function Basket(props) {
       })*/
       console.log("checkout cleared");
       setCartItems([])
-      
     }
   }
 
@@ -79,9 +78,9 @@ export default function Basket(props) {
             </div>
             <hr />
             <div className="row">
-                <button onClick={checkOut}>
-                  Place Order
-                </button>
+              <button onClick={checkOut}>
+                Place Order
+              </button>
             </div>
           </>
         )}

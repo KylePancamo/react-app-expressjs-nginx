@@ -38,6 +38,7 @@ button.add {
   border-radius: 3px;
   min-width: fit-content;
 }
+
 button.add:hover {
   color: green;
   background-color: aliceblue;
@@ -45,7 +46,7 @@ button.add:hover {
 
 button.remove {
   border-radius: 3px;
-  background-color:aliceblue;
+  background-color: aliceblue;
   min-width: fit-content;
 }
 
@@ -88,5 +89,5 @@ button.badge {
 
 .products table td {
   word-break: break-all;
-  
+
 }

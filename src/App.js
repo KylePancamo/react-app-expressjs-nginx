@@ -87,8 +87,8 @@ function App() {
           <Route path="/discountcode" exact component={DiscountCode} />
           <Route path="/addproduct" exact component={AddProduct} />
           <Route path="/updateproduct" exact component={UpdateProduct} />
-          <Route path="/" 
-          render = {(props) => <Home {...props} />} />
+          <Route path="/"
+            render={(props) => <Home {...props} />} />
         </Switch>
       </Router>
     </div>
