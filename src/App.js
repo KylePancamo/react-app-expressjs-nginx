@@ -68,7 +68,7 @@ function App() {
                 <Link to="/account">Account</Link>
               </>
             )}
-            {JSON.parse(localStorage.getItem('login')) == "admin" && isAdmin && (
+            {JSON.parse(localStorage.getItem('login')) === "true" && isAdmin && (
               <>
                 <Link to="/admin">Admin Portal</Link>
               </>

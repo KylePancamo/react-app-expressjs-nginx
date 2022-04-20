@@ -3,8 +3,7 @@ import "./DiscountCodePage.css"
 function DiscountCode()
 {
     return (
-        <body>
-            <div Class = "discountcode-container">
+            <div className = "discountcode-container">
                 <h1>Add a Discount Code</h1>
                 <form>
                     <input type="text" placeholder="Discount Code Name" />
@@ -31,7 +30,6 @@ function DiscountCode()
                     <input type="submit" value="Back to Admin Tools" />
                 </form>
             </div>
-        </body>
     );
 }
 export default DiscountCode;

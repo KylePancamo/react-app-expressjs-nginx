@@ -200,6 +200,109 @@ app.post('/signin', (req, res) => {
     );
 })
 
+app.post("/addproduct", (req, res) => {
+
+    const productID = req.body.productID;
+    const modelName = req.body.modelName;
+    const itemDesc = req.body.itemDesc;
+    const price = req.body.price;
+
+    db.query(
+        "SELECT * FROM item_template WHERE id = ?",
+        productID,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            if (result.length > 0) {
+                return res.send({ message: "Error: Item already exists" });
+
+            } else {
+                const data = [
+                    productID,
+                    modelName,
+                    itemDesc,
+                    price
+                ];
+
+                    const query = "INSERT INTO item_template (id, item_name, item_description, item_price) VALUES (?, ?, ?, ?);";
+                    db.query(
+                        query, data,
+                        (err, result) => {
+                            if (err) {
+                                res.send({ message: "Error: Failed to insert item" });
+                            }
+                            else{
+                                res.status(200).send("Success");
+                            }
+                        }
+                    );
+            }
+        }
+    )
+});
+
+app.post("/searchproduct", (req, res) => {
+
+    const productID = req.body.productID;
+    db.query(
+        "SELECT * FROM item_template WHERE id = ?",
+        productID,
+        (err, result) => {
+            if(err) {
+                console.log(err);
+            }
+            if(result.length <= 0) {
+                return res.send({ err: "Error: Item not found" });
+            }
+            else {
+                res.send({ modelName: result[0].item_name, itemDesc: result[0].item_description, price: result[0].item_price })
+            }
+        }
+    )
+});
+
+app.post("/updateproduct", (req, res) => {
+
+    const productID = req.body.productID;
+    const modelName = req.body.modelName;
+    const itemDesc = req.body.itemDesc;
+    const price = req.body.price;
+
+    db.query(
+        "SELECT * FROM item_template WHERE id = ?",
+        productID,
+        (err, result) => {
+            if(err) {
+                console.log(error);
+            }
+            if(result.length <= 0) {
+                return res.send({ message: "Error: Item not found" });
+            }
+            else{
+                const data = [
+                    modelName,
+                    itemDesc,
+                    price,
+                    productID
+                ];
+
+                const query = "UPDATE item_template SET item_name = ?, item_description = ?, item_price = ? WHERE id = ?;";
+                db.query(query, data, 
+                    (err, result) => {
+                        if(err)
+                        {
+                            res.send({ message: "Error: Item failed to update" })
+                        }else{
+                            res.status(200).send("Success");
+                        }
+                    }
+                );
+            }
+        }
+    )
+});
+
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');
