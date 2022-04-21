@@ -16,11 +16,13 @@ function SignIn() {
     let history = useHistory();
 
     const login = () => {
+        e.preventDefault();
         Axios.post("/api/signin",
             {
                 username: username,
                 password: password,
             }).then((response) => {
+                console.log(response);
                 if (response.data.message) {
                     setLoginStatus(response.data.message);
                 } else {
@@ -40,32 +42,37 @@ function SignIn() {
     }, [])
 
     return (
-        <div className="signin-background">
-            <div className="signin-webpage">
-                <div className="signin-wrapper">
-                    <h1><b><i>Sign In</i></b></h1>
-                    <input
+		<div className="signin-wrapper">
+			<div className="signin-form-wrapper">
+				<h2>Login</h2>
+				<form>
+					<div className="username">
+						<label><b>Username:</b></label>
+						<input 
                         type="text"
-                        placeholder="Username..."
-                        onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}
-                    />
-
-                    <input
+                        placeholder='Username...'
+							onChange={(event) => {
+								setUsername(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="password">
+						<label><b>Password:</b></label>
+						<input 
                         type="password"
-                        placeholder="Password..."
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}
-                    />
-                    <div>
-                        <button onClick={login}> <b>Login</b></button>
-                    </div>
-                    <h1>{loginStatus}</h1>
-                </div>
-            </div>
-        </div>
-    );
+                        placeholder='Password...'
+							onChange={(event) => {
+								setPassword(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="submit">
+						<button onClick={login}>Login</button>
+						<h1>{loginStatus}</h1>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
 }
 export default SignIn;

@@ -16,7 +16,8 @@ function Registration() {
 
 	let history = useHistory();
 
-	const registerUser = () => {
+	const registerUser = (e) => {
+		e.preventDefault();
 		const data = {
 			username: username,
 			password: password,
@@ -32,7 +33,7 @@ function Registration() {
 			setRegistrationStatus("You must fill out all fields before continuing");
 			return;
 		}
-
+		
 		Axios.post("/api/register", data).then((response) => {
 			if (response.data.error) {
 				alert(response.data.error);
@@ -47,52 +48,85 @@ function Registration() {
 	};
 
 	return (
-		<div className="registration-background">
-			<div className="information">
-				<label><b>Username:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setUsername(event.target.value);
-					}}
-				/>
-				<label><b>Password:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setPassword(event.target.value);
-					}}
-				/>
-				<label><b>Email:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setEmail(event.target.value);
-					}}
-				/>
-				<label><b>Address:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setAddress(event.target.value);
-					}}
-				/>
-				<label><b>First Name:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setFirstname(event.target.value);
-					}}
-				/>
-				<label><b>Last Name:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setLastname(event.target.value);
-					}}
-				/>
-				<label><b>Phone Number:</b></label>
-				<input type="text"
-					onChange={(event) => {
-						setPhone(event.target.value);
-					}}
-				/>
-				<button onClick={registerUser}><i>Register</i></button>
-				<h1>{registrationStatus}</h1>
+		<div className="wrapper">
+			<div className="form-wrapper">
+				<h2>Create Account</h2>
+				<form>
+					<div className="userName">
+						<label><b>Username:</b></label>
+						<input 
+						type="text"
+						placeholder="Username..."
+							onChange={(event) => {
+								setUsername(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="password">
+						<label><b>Password:</b></label>
+						<input 
+						type="password"
+						placeholder="Password"
+							onChange={(event) => {
+								setPassword(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="email">
+						<label><b>Email:</b></label>
+						<input 
+						type="email"
+						placeholder="Email..."
+							onChange={(event) => {
+								setEmail(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="address">
+						<label><b>Address:</b></label>
+						<input 
+						type="text"
+						placeholder="Address..."
+							onChange={(event) => {
+								setAddress(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="firstName">
+						<label><b>First Name:</b></label>
+						<input 
+						type="text"
+						placeholder="First Name..."
+							onChange={(event) => {
+								setFirstname(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="lastName">
+						<label><b>Last Name:</b></label>
+						<input 
+						type="text"
+						placeholder="Last Name..."
+							onChange={(event) => {
+								setLastname(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="phoneNumber">
+						<label><b>Phone Number:</b></label>
+						<input 
+						type="text"
+						placeholder="Phone Number..."
+							onChange={(event) => {
+								setPhone(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="submit">
+						<button onClick={registerUser}><i>Register</i></button>
+						<h1>{registrationStatus}</h1>
+					</div>
+				</form>
 			</div>
 		</div>
 	);
