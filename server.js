@@ -3,6 +3,8 @@ const cors = require('cors');
 const express = require('express');
 const app = express(); // create express app
 const http = require('http');
+const multer = require("multer");
+const fs = require('fs');
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -155,6 +157,7 @@ app.get("/get-items", (req, res) => {
         `SELECT
             item_template.id,
             item_template.item_name,
+            item_template.manufacturer,
             item_template.item_description,
             item_template.item_price,
             image_pathnames.pathname
@@ -163,10 +166,10 @@ app.get("/get-items", (req, res) => {
             ON item_template.id = image_pathnames.item_id`,
         (err, items) => {
             if (err) {
-                res.send({ err: err })
+                console.log(err);
+            } else {
+                res.send({ itemList: items });
             }
-
-            res.send({ itemList: items });
         }
     );
 })
@@ -200,46 +203,70 @@ app.post('/signin', (req, res) => {
     );
 })
 
-app.post("/addproduct", (req, res) => {
+var storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, './public/images')
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, file.originalname)
+    }
+})
 
-    const productID = req.body.productID;
-    const modelName = req.body.modelName;
-    const itemDesc = req.body.itemDesc;
-    const price = req.body.price;
+var upload = multer({
+    storage: storage,
+    fileFilter: (req, file, callBack) => {
+        if (fs.existsSync("./public/images/" + file.originalname)) {
+            req.fileValidationError = "File already exists!"
+            return callBack(null, false, req.fileValidationError);
+        } else {
+            callBack(null, true);
+        }
+    }
+});
 
+app.post("/addproduct", upload.single('image'), (req, res) => {
+    if (req.fileValidationError) {
+        return res.send({ message: req.fileValidationError });
+    } else if (!req.file) {
+        console.log("No File added");
+    }
+    else {
+        console.log("File added");
+    }
+
+    const modelName = req.body.itemInfo[0];
+    const itemDesc = req.body.itemInfo[1];
+    const price = req.body.itemInfo[2];
+    const path = "images/" + req.file.filename;
+    //console.log(req.file.filename);
+    const data = [
+        modelName,
+        itemDesc,
+        price
+    ];
+    const query = "INSERT INTO item_template (item_name, item_description, item_price) VALUES (?, ?, ?);";
     db.query(
-        "SELECT * FROM item_template WHERE id = ?",
-        productID,
+        query, data,
         (err, result) => {
             if (err) {
-                console.log(err);
+                res.send({ message: "Error: Failed to insert item" });
             }
-            if (result.length > 0) {
-                return res.send({ message: "Error: Item already exists" });
-
-            } else {
-                const data = [
-                    productID,
-                    modelName,
-                    itemDesc,
-                    price
-                ];
-
-                    const query = "INSERT INTO item_template (id, item_name, item_description, item_price) VALUES (?, ?, ?, ?);";
-                    db.query(
-                        query, data,
-                        (err, result) => {
-                            if (err) {
-                                res.send({ message: "Error: Failed to insert item" });
-                            }
-                            else{
-                                res.status(200).send("Success");
-                            }
+            else {
+                let image = [result.insertId, path]
+                db.query(
+                    "INSERT INTO image_pathnames (item_id, pathname) VALUES (?, ?);",
+                    image,
+                    (err, result) => {
+                        if (err) {
+                            res.send({ message: "Failed to insert into image_pathnames" })
+                        } else {
+                            res.status(200).send("Success");
                         }
-                    );
+                    }
+                )
             }
         }
-    )
+    );
 });
 
 app.post("/searchproduct", (req, res) => {
@@ -249,10 +276,10 @@ app.post("/searchproduct", (req, res) => {
         "SELECT * FROM item_template WHERE id = ?",
         productID,
         (err, result) => {
-            if(err) {
+            if (err) {
                 console.log(err);
             }
-            if(result.length <= 0) {
+            if (result.length <= 0) {
                 return res.send({ err: "Error: Item not found" });
             }
             else {
@@ -273,13 +300,13 @@ app.post("/updateproduct", (req, res) => {
         "SELECT * FROM item_template WHERE id = ?",
         productID,
         (err, result) => {
-            if(err) {
+            if (err) {
                 console.log(error);
             }
-            if(result.length <= 0) {
+            if (result.length <= 0) {
                 return res.send({ message: "Error: Item not found" });
             }
-            else{
+            else {
                 const data = [
                     modelName,
                     itemDesc,
@@ -288,12 +315,11 @@ app.post("/updateproduct", (req, res) => {
                 ];
 
                 const query = "UPDATE item_template SET item_name = ?, item_description = ?, item_price = ? WHERE id = ?;";
-                db.query(query, data, 
+                db.query(query, data,
                     (err, result) => {
-                        if(err)
-                        {
+                        if (err) {
                             res.send({ message: "Error: Item failed to update" })
-                        }else{
+                        } else {
                             res.status(200).send("Success");
                         }
                     }

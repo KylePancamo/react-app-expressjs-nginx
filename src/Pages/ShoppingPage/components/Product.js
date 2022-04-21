@@ -20,6 +20,9 @@ export default function Product(props) {
         </thead>
         <tbody>
           <tr>
+            {product.manufacturer}
+          </tr>
+          <tr>
             <td>
               ${product.item_price}
             </td>

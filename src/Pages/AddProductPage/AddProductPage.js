@@ -2,76 +2,84 @@ import "./AddProductPage.css"
 import React, { useState } from 'react';
 import Axios from "axios";
 
-function AddProduct()
-{
-    const [productID, setProductID] = useState(0);
-    const [modelName, setModelName] = useState("");
+function AddProduct() {
+    const [itemName, setItemName] = useState("");
     const [manuName, setManuName] = useState("");
     const [itemDesc, setItemDesc] = useState("");
     const [price, setPrice] = useState(0);
+    const [file, setFile] = useState();
     const [errorMsg, setErrorMsg] = useState("");
 
-    const addproduct = () => {
-        Axios.post("http://localhost:5000/addproduct",
-            {
-                productID: productID,
-                modelName: modelName,
-                itemDesc: itemDesc,
-                price: price,
-            }).then((response) => {
+    const onFormSubmit = e => {
+        if (!file) {
+            setErrorMsg("Please upload a file before uploading!")
+            e.preventDefault();
+            return;
+        }
+
+        setErrorMsg("");
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append('itemInfo', itemName);
+        formData.append('itemInfo', itemDesc);
+        formData.append('itemInfo', price);
+
+        
+        Axios.post("http://localhost:5000/addproduct", formData).then((response) => {
                 if (response.data.message) {
                     setErrorMsg(response.data.message);
                 } else {
-                    setProductID("");
-                    setModelName("");
+                    setItemName("");
                     setItemDesc("");
                     setPrice("");
                     setErrorMsg("Item added successfully");
                 }
             });
-    };
+    }
 
     return (
-            <div class = "addproduct-container">
-                <h1>Add a New Product</h1>
-                <form>
-                    <input type="text" placeholder="Product ID"
+        <div class="addproduct-container">
+            <h1>Add a New Product</h1>
+            <form>
+                <input type="text" required placeholder="Item Name"
                     onChange={(e) => {
-                        setProductID(e.target.value);
-                    }}/>
-                </form>
-                <form>
-                    <input type="text" placeholder="Model Name" 
-                     onChange={(e) => {
-                        setModelName(e.target.value);
-                    }}/>
-                </form>
-                <form>
-                    <input type="text" placeholder="Description" 
-                     onChange={(e) => {
+                        setItemName(e.target.value);
+                    }} />
+            </form>
+            <form>
+                <input type="text" required placeholder="Description"
+                    onChange={(e) => {
                         setItemDesc(e.target.value);
-                    }}/>
-                </form>
-                <form>
-                    <input type="text" placeholder="Manufacturer Name" 
+                    }} />
+            </form>
+            <form>
+                <input type="text" required placeholder="Manufacturer Name"
                     onChange={(e) => {
                         setManuName(e.target.value);
-                    }}/>
-                </form>
-                <form>
-                    <input type="text" placeholder="Price" 
+                    }} />
+            </form>
+            <form>
+                <input type="text" required placeholder="Price"
                     onChange={(e) => {
                         setPrice(e.target.value);
-                    }}/>
-                </form>
+                    }} />
+            </form>
+            <form onSubmit={onFormSubmit}>
+                <input type="file" name='image' onChange={(e) => {
+                    setFile(e.target.files[0])
+                }} />
                 <div>
-                        <button onClick={addproduct}> <b>Add Product</b></button>
+                    <button type="submit">Add Product</button>
                 </div>
-                <form action="http://localhost:3000/admin">
-                    <input type="submit" value="Back to Admin Tools" />
-                </form>
+            </form>
+            <form action="http://localhost:3000/admin">
+                <input type="submit" value="Back to Admin Tools" />
+            </form>
+            {errorMsg && 
                 <h2>{errorMsg}</h2>
-            </div>
+            }
+        </div>
     );
 }
 export default AddProduct;
