@@ -48,8 +48,8 @@ function Registration() {
 	};
 
 	return (
-		<div className="wrapper">
-			<div className="form-wrapper">
+		<div className="registration-wrapper">
+			<div className="registration-form-wrapper">
 				<h2>Create Account</h2>
 				<form>
 					<div className="userName">

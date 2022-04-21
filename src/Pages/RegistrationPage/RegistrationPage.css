@@ -11,7 +11,7 @@
   SILVER PINK: #C9ADA7
   */
   
-  .wrapper {
+  .registration-wrapper {
     height: 100%;
     width: 100%;
     display: flex;
@@ -20,7 +20,7 @@
     align-items: center;
   }
   
-  .form-wrapper {
+  .registration-form-wrapper {
     display: flex;
     flex-direction: column;
     width: 280px;
@@ -33,7 +33,7 @@
     background-color: #fefefe;
   }
   
-  .form-wrapper > h2 {
+  .registration-form-wrapper > h2 {
     display: flex;
     justify-content: center;
     font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
@@ -44,7 +44,7 @@
     background-color: transparent;
   }
   
-  form {
+  .registration-form-wrapper form {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -56,26 +56,26 @@
     padding-right: 0.5em;
   }
   
-  label {
+  .registration-form-wrapper label {
     margin-bottom: 0.5em;
     color: #444;
     font-weight: lighter;
   }
   
-  input {
+  .registration-form-wrapper input {
     padding: 10px 10px;
     border-radius: 5px;
     outline: none;
     border: 1px solid #d6d1d5;
   }
   
-  input::placeholder {
+  .registration-form-wrapper input::placeholder {
     font-size: 1.2em;
     font-weight: lighter;
     color: #bbb;
   }
   
-  button {
+  .registration-form-wrapper button {
     min-width: 100%;
     cursor: pointer;
     margin-right: 0.25em;
@@ -86,7 +86,7 @@
     background-color: #22223B;
     color: #fefefe;
   }
-  button:hover {
+  .registration-form-wrapper button:hover {
     background-color: #4A4E69;
     color: #fefefe;
   }
