@@ -16,16 +16,31 @@ export default function Basket(props) {
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  const [accountId, setAccountId] = useState(0);
 
-  const checkOut = () => {
-    if (cartItems.length != 0) {
-      /*Axios.post("http://localhost:5000/checkout", cartItems).then((response) => {
+  const checkOut = async () => {
+    if (JSON.parse(localStorage.getItem('login')) === "true") {
+      if (cartItems.length != 0) {
+        const { data } = await Axios.get("http://localhost:5000/signin");
+        console.log("Await data:");
+        setAccountId(data.user.account_id);
 
-      })*/
-      console.log("checkout cleared");
-      setCartItems([])
+        let checkOutData = { cartItems, totalPrice, accountId }
+        Axios.post("http://localhost:5000/checkout", checkOutData).then((response) => {
+
+        }, [])
+        console.log("checkout cleared");
+        setCartItems([])
+      }
+    } else {
+      alertUser();
     }
   }
+
+  const alertUser = () => {
+    alert("Please login to perform this operation!")
+  }
+
 
   return (
     <aside className="block col-1">
