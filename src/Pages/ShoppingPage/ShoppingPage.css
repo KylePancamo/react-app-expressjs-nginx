@@ -89,5 +89,18 @@ img.small {
 
 .products table td {
   word-break: break-all;
+}
 
+.products img {
+  width: 100px;
+  min-height: 13vh; 
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.product-button {
+  margin-top: 5px;
+  background-color:honeydew;
+  margin-left: 9px;
+  border-radius: 1.5px;
 }

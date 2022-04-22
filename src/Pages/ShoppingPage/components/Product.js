@@ -11,10 +11,11 @@ export default function Product(props) {
               {product.item_name}
             </th>
             <th>
-              <img
+            <img
                 src={product.pathname}
                 alt="Glasses"
                 width={100} />
+              <button className="product-button">View product</button>
             </th>
           </tr>
         </thead>
