@@ -5,11 +5,23 @@ import Basket from './components/Basket';
 import { useEffect, useState } from 'react';
 import Axios from "axios";
 
-function ShoppingPage() {
-
+function ShoppingPage(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    if (props.location.cart) {
+      props.location.cart.map(element => {
+        cartItems.push(element);
+      })
+
+      for (var i = 0; i < cartItems.length; i++) {
+        onAdd(cartItems[i]);
+      }
+      window.history.replaceState({}, document.title)
+    }
+    if (props.location.state) {
+      onAdd(props.location.state);
+    }
     Axios.get("http://localhost:5000/get-items").then((response) => {
       if (response.data) {
         setProducts(response.data.itemList);
@@ -18,6 +30,7 @@ function ShoppingPage() {
   }, []);
 
   const [cartItems, setCartItems] = useState([]);
+
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -46,8 +59,19 @@ function ShoppingPage() {
   return (
     <div className="ShoppingPage">
       <h2>Browse Products</h2>
+      <div className="Middleright">
+        <div className="searchbar">
+          <div className="fa fa-search"></div>
+          <input type="text" placeholder="Search..."></input>
+          <div className="fa fa-times"></div>
+        </div>
+      </div>
       <div className="row">
-        <Main products={products} onAdd={onAdd}></Main>
+        <Main
+          products={products}
+          onAdd={onAdd}
+          cartItems={cartItems}>
+        </Main>
         <Basket
           cartItems={cartItems}
           onAdd={onAdd}

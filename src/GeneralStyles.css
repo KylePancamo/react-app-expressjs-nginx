@@ -10,3 +10,7 @@ button:hover {
   color: white;
   cursor: pointer;
 }
+
+body {
+  background-image: url("./images/oceanimagedesktop.jpg");
+} 

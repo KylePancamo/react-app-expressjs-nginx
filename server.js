@@ -360,7 +360,7 @@ app.post("/checkout", (req, res) => {
                     accountId,
                     orderNum
                 ]
-                db.query (
+                db.query(
                     "INSERT INTO order_history (cust_id, order_num) VALUES (?, ?);",
                     historyData,
                     (err, result) => {
@@ -391,6 +391,73 @@ app.post("/checkout", (req, res) => {
     )
 })
 
+app.post("/discounts", (req, res) => {
+    console.log(req.body)
+
+    const codeName = req.body.codename;
+    const percentOff = req.body.discountamount;
+
+    let data = [
+        codeName,
+        percentOff
+    ]
+
+    db.query(
+        "INSERT INTO discounts (discount_code, percentOff) VALUES (?, ?);",
+        data,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            res.send(result);
+        }
+    )
+});
+
+app.get("/get-discounts", (req, res) => {
+    db.query(
+        "SELECT * from discounts",
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                let discount = {}
+                result.map(index => {
+                    discount[index.discount_code] = index.percentOff;
+                })
+                res.send(discount);
+            }
+        }
+    )
+})
+
+app.get("/DoD-items", (req, res) => {
+    db.query(
+        `SELECT
+            item_template.id,
+            item_template.item_name,
+            item_template.manufacturer,
+            item_template.item_description,
+            item_template.item_price,
+            dealsoftheday.percentOff,
+            image_pathnames.pathname
+        FROM item_template
+        JOIN image_pathnames
+            ON item_template.id = image_pathnames.item_id
+        JOIN dealsoftheday
+            ON item_template.id = dealsoftheday.item_id`,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                result.map(index => {
+                    index.item_price = (index.item_price - (index.item_price * (index.percentOff / 100)));
+                })
+                res.send(result);
+            }
+        }
+    )
+})
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');

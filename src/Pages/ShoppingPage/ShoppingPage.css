@@ -62,6 +62,27 @@ img.small {
   width: 1.5rem;
 }
 
+.rowButton button {
+  min-width: max-content;
+}
+
+.discountInput input {
+  outline: none;
+}
+
+.apply input {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgba(14, 61, 105, 0.8);
+  color: #fefefe;
+}
+
+.apply input:hover {
+  color:chartreuse
+}
+
 .products td button {
   width: max-content;
 }
@@ -93,14 +114,50 @@ img.small {
 
 .products img {
   width: 100px;
-  min-height: 13vh; 
+  min-height: 13vh;
   border-radius: 10px;
   margin-left: 5px;
 }
 
 .product-button {
   margin-top: 5px;
-  background-color:honeydew;
+  background-color: honeydew;
   margin-left: 9px;
   border-radius: 1.5px;
+}
+
+/* Add a black background color to the top navigation bar */
+.searchbar {
+  position: inherit;
+  display: flex;
+  align-items: center;
+  background-color: lightseagreen;
+  padding: 0.5rem;
+  border: none;
+  flex-grow: 1;
+  border-radius: 0;
+  width: 99.4;
+  color: white;
+  right: 100px;
+  top: 0.6rem;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+/* Style the "active" element to highlight the current page */
+.searchbar a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.searchbar input {
+  padding: 6px;
+  border: none;
+  outline: none;
+  margin: 0 0.5rem 0 0.5rem;
+  width: 100%;
+  height: 2px;
+  background-color: lightseagreen;
+  font-size: 17px;
 }

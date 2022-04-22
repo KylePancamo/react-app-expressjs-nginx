@@ -4,7 +4,7 @@ import Home from "./Pages/HomePage/HomePage"
 import Axios from "axios";
 import Product from "./Pages/ProductPage/ProductPage"
 import Login from "./Pages/SignInPage/SignInPage"
-import Cart from "./Pages/ShoppingPage/ShoppingPage"
+import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage"
 import Account from "./Pages/AccountPage/AccountPage"
 import Admin from "./Pages/AdminPortal/adminPortal"
 import OrderHistory from "./Pages/OrderHistory/OrderHistory.js"
@@ -20,15 +20,18 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useHistory
 } from "react-router-dom";
-import ShoppingPage from "./Pages/ShoppingPage/ShoppingPage";
+
 import cookieParser from "cookie-parser";
 function App() {
   const [loginState, setLoginState] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [userInfo, setUserInfo] = useState();
   Axios.defaults.withCredentials = true;
+
+  const history = useHistory();
 
   useEffect(() => {
     Axios.get("/api/signin").then((response) => {
@@ -37,30 +40,34 @@ function App() {
 
           setUserInfo(response.data.user);
           if (response.data.user.username == "admin") {
-            setIsAdmin(true);
+            //setIsAdmin(true);
+            localStorage.setItem('admin', JSON.stringify("true"));
           }
         }
         else {
-          logout()
+          logout();
         }
       }).catch((err) => {
         console.log(err);
         logout();
       })
-    }
-
   }, [JSON.parse(localStorage.getItem('login'))])
 
   const logout = (e) => {
     const cookies = new Cookies();
-    if (cookies.get('userId')) {
+    if (cookies.get('userId') || (JSON.parse(localStorage.getItem('login')) === "true")) {
+      if (JSON.parse(localStorage.getItem('admin')) === "true") {
+        localStorage.setItem('admin', JSON.stringify("false"))
+      }
       cookies.remove('userId');
       localStorage.setItem('login', JSON.stringify("false"))
       window.location.reload(false);
       alert("You have been logged out.")
+      history.push('/');
     }
   }
 
+  console.log(isAdmin);
   return (
     <div className="App">
       <Router>
@@ -71,10 +78,10 @@ function App() {
                 width="50"
                 height="50" />
             </Link>
-            <Link to="/product">Product</Link>
-            <Link to="/cart">Shopping Page</Link>
-            <Link to="/order-history">Order History</Link>
-            {JSON.parse(localStorage.getItem('login')) === "false" && (
+            {/* <Link to="/product-page">Product</Link> */}
+            <Link to="/shopping-page">Shopping Page</Link>
+            {/* <Link to="/order-history">Order History</Link> */}
+            {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) && (
               <>
                 <Link to="/registration">Register</Link>
                 <Link to="/login">Sign In</Link>
@@ -82,14 +89,15 @@ function App() {
             )}
             {JSON.parse(localStorage.getItem('login')) === "true" && (
               <>
+                <Link to="/order-history">Order History</Link>
                 <Link to="/account">Account</Link>
               </>
             )}
-            {JSON.parse(localStorage.getItem('login')) === "true" && isAdmin && (
+            {JSON.parse(localStorage.getItem('admin')) === "true" && 
               <>
                 <Link to="/admin">Admin Portal</Link>
               </>
-            )}
+            }
 
           </div>
           {JSON.parse(localStorage.getItem('login')) === "true" &&
@@ -99,9 +107,9 @@ function App() {
         </div>
         <Switch>
           <Route path="/order-history" component={() => <OrderHistory />} />
-          <Route path="/cart" exact component={Cart} />
+          <Route path="/shopping-page" exact component={ShoppingPage} />
           <Route path="/registration" exact component={Registration} />
-          <Route path="/product" exact component={Product} />
+          <Route path="/product-page" exact component={Product} />
           <Route path="/login" exact component={Login} />
           <Route path="/account" exact component={Account} />
           <Route path="/admin" exact component={Admin} />

@@ -52,6 +52,26 @@ function Registration() {
 			<div className="registration-form-wrapper">
 				<h2>Create Account</h2>
 				<form>
+				<div className="firstName">
+						<label><b>First Name:</b></label>
+						<input 
+						type="text"
+						placeholder="First Name..."
+							onChange={(event) => {
+								setFirstname(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="lastName">
+						<label><b>Last Name:</b></label>
+						<input 
+						type="text"
+						placeholder="Last Name..."
+							onChange={(event) => {
+								setLastname(event.target.value);
+							}}
+						/>
+					</div>
 					<div className="userName">
 						<label><b>Username:</b></label>
 						<input 
@@ -92,26 +112,7 @@ function Registration() {
 							}}
 						/>
 					</div>
-					<div className="firstName">
-						<label><b>First Name:</b></label>
-						<input 
-						type="text"
-						placeholder="First Name..."
-							onChange={(event) => {
-								setFirstname(event.target.value);
-							}}
-						/>
-					</div>
-					<div className="lastName">
-						<label><b>Last Name:</b></label>
-						<input 
-						type="text"
-						placeholder="Last Name..."
-							onChange={(event) => {
-								setLastname(event.target.value);
-							}}
-						/>
-					</div>
+					
 					<div className="phoneNumber">
 						<label><b>Phone Number:</b></label>
 						<input 

@@ -7,8 +7,6 @@ import { Redirect } from 'react-router-dom'
 
 function OrderHistory(props) {
 
-    console.log(props);
-
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('login')) === "true") {
             Axios.get("/api/orders").then((response) => {
@@ -25,6 +23,7 @@ function OrderHistory(props) {
     const [itemInfo, setItemInfo] = useState([]);
     const [orders, setOrders] = useState([]);
     const useSortableData = (items, config = { key: 'null', direction: 'null' }) => {
+        console.log(items);
 
         const [sortedConfig, setSortedConfig] = useState(config);
 
@@ -81,8 +80,8 @@ function OrderHistory(props) {
                             <th>
                                 <button
                                     type="button"
-                                    onClick={() => requestSort('id')}
-                                    className={getClassNamesFor('id')}>
+                                    onClick={() => requestSort('item_id')}
+                                    className={getClassNamesFor('item_id')}>
                                     Item Id
                                 </button>
                             </th>
@@ -116,7 +115,7 @@ function OrderHistory(props) {
                         {
                             items.map(index => {
                                 return (
-                                    <tr key={index.item_id}>
+                                    <tr>
                                         <td>{index.order_num}</td>
                                         <td>{index.item_id}</td>
                                         <td>{index.item_name}</td>
@@ -126,7 +125,7 @@ function OrderHistory(props) {
                                 )
                             })
                         }
-                        {JSON.parse(localStorage.getItem('login')) === "false" &&
+                        {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) &&
                             <Redirect to={{ alert: "Please login to view your orders!" }} />
                         }
                     </tbody>

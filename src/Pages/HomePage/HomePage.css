@@ -1,10 +1,11 @@
 .HomePage {
-  min-height: 100vh;
+  min-width: fit-content;
   background-color: rgb(211, 254, 255);
   font-family: 'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
 }
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -12,7 +13,7 @@
   flex:1 0 21%;
 }
 
-header {
+.HomeHeader header {
   text-align: left;
   background-image: url(../../images/oceanimagedesktop.jpg);
   background-blend-mode: lighten;
@@ -52,9 +53,21 @@ h3 {
   flex-direction: column;
   color: black;
   font-size: large;
-  margin: 5%;
   align-items: left;
   text-align: center;
+  width: 100%;
+  min-height: 60vh;
+}
+
+.frame-sets {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.frame-sets div{
+  margin: auto;
 }
 
 .Frames button {
@@ -83,45 +96,4 @@ h3 {
   font-size: 18px
 }
 
-/* Add a black background color to the top navigation bar */
-.searchbar {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  background-color: lightseagreen;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  width: 200px;
-  color: white;
-  right: 100px;
-  top: 0.6rem;
-}
 
-/* Style the "active" element to highlight the current page */
-.searchbar a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-/* Style the search box inside the navigation bar */
-.searchbar input {
-  padding: 6px;
-  border: none;
-  outline: none;
-  margin: 0 0.5rem 0 0.5rem;
-  width: 100%;
-  height: 2px;
-  background-color: lightseagreen;
-  font-size: 17px;
-}
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 630px) {
-  .searchbar {
-    position: inherit;
-    border-radius: 0;
-    flex-grow: 1;
-    width: 98%;
-  }
-}

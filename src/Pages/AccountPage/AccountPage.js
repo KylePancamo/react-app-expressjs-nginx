@@ -12,11 +12,14 @@ function Account() {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
 
-  let history = useHistory();
+  const viewOrderHistory = (e) => {
+    history.push({
+      pathname: '/order-history',
 
-  const signout = () => {
-    history.push("/");  
-};
+    })
+  }
+
+  let history = useHistory();
 
   useEffect(() => {
     Axios.get("http://localhost:5000/signin").then((response) => {
@@ -66,11 +69,9 @@ function Account() {
                   <input type="text" value={address} disabled ></input>
                 </div>
               </div>
-              <div className="signoutbutton">
-                <button onClick={signout}>Sign Out</button>
-              </div>
             </form>
           </div>
+          <button onClick={viewOrderHistory}>View Order History</button>
         </div>
       </div>
   );

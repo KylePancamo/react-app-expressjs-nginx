@@ -10,10 +10,12 @@
 .order-list .tables {
     text-align: left;
     border-radius: 10px;
+    box-shadow: 0px 8px 36px #222;
     background-color: cadetblue;
     color: white;
     border-spacing: 10px;
-    margin-left: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    margin-left: 27%;
 }
 .order-list th {
     text-align: center;
@@ -25,9 +27,12 @@
 
 thead button {
     font-family: inherit;
-    font-weight: 700;
+    font-weight: 850;
+    font-style: oblique;
     padding: 0.3em;
     min-width: max-content;
+    background-color: transparent;
+    color:black
 }
 
 thead button.ascending::after {
