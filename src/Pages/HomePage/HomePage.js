@@ -13,16 +13,6 @@ function Home(props) {
 
   return (
     <div>
-      <div className="row">
-      <div className="Topright">
-        <div className="hotbar-button">
-          <img src={cartImage} alt=""
-            width="50"
-            height="50"
-          />
-        </div>
-      </div>
-      </div>
       <div className="Middleright">
         <div className="searchbar">
           <div className="fa fa-search"></div>
