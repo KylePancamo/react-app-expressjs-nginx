@@ -48,45 +48,49 @@ function UpdateProduct()
     };
 
     return (
-            <div class = "updateproduct-container">
-                <h1>Update an Existing Product</h1>
-                <form>
-                        <input type="number" placeholder="Enter a Product ID" value={productID}
-                        onChange={(e) => {
-                            setProductID(e.target.value);
-                        }}/>
-                </form>
-                <div>
-                        <button onClick={searchproduct}> <b>Search</b></button>
-                </div>
-                &nbsp;
-                <div class = "product-display">
+            <div className = "updateproduct-wrapper">
+                <div className = "updateproduct-form-wrapper">
+                    <h2>Update an Existing Product</h2>
                     <form>
-                            <input type="text" value={modelName} 
+                            <input type="number" placeholder="Enter a Product ID" value={productID}
                             onChange={(e) => {
-                                setModelName(e.target.value);
+                                setProductID(e.target.value);
                             }}/>
                     </form>
-                    <form>
-                            <input type="text" value={itemDesc} 
-                            onChange={(e) => {
-                                setItemDesc(e.target.value);
-                            }}/>
-                    </form>
-                    <form>
-                            <input type="text" value={price} 
-                            onChange={(e) => {
-                                setPrice(e.target.value);
-                            }}/>
-                    </form>
+                    <div className = "searchbutton-wrapper">
+                            <button onClick={searchproduct}> <b>Search</b></button>
+                    </div>
+                    &nbsp;
+                    <div className = "product-display">
+                        <form>
+                                <input type="text" value={modelName} 
+                                onChange={(e) => {
+                                    setModelName(e.target.value);
+                                }}/>
+                        </form>
+                        <form>
+                                <input type="text" value={itemDesc} 
+                                onChange={(e) => {
+                                    setItemDesc(e.target.value);
+                                }}/>
+                        </form>
+                        <form>
+                                <input type="text" value={price} 
+                                onChange={(e) => {
+                                    setPrice(e.target.value);
+                                }}/>
+                        </form>
+                    </div>
+                    <div className = "submitbutton-wrapper">
+                            <button onClick={updateproduct}> <b>Update Product</b></button>
+                    </div>
+                    <div className = "backbutton-wrapper"> 
+                        <form action="http://localhost:3000/admin">
+                            <input type="submit" value="Back to Admin Tools" />
+                        </form>
+                    </div>
+                    <div className = "errormessage"><h2>{errorMsg}</h2></div>
                 </div>
-                <div>
-                        <button onClick={updateproduct}> <b>Update Product</b></button>
-                </div>
-                <form action="http://localhost:3000/admin">
-                    <input type="submit" value="Back to Admin Tools" />
-                </form>
-                <h2>{errorMsg}</h2>
             </div>
     );
 }

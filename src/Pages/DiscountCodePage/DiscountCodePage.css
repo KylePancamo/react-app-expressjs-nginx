@@ -1,30 +1,107 @@
-.discountcode-container {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    height: 350px;
-    left: 39%;
-    top: 30%;
-    justify-content: center;
-    align-items: center;
-    min-height: 300px;
-  }
-  
-  .discountcode-container input {
-    width: 250px;
-    height: 50px;
-    font-size: 20px;
-    padding-left: 10px;
-    margin: 5px;
-    border-radius: 10px;
-  }
+.discountcode-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
 
-  .discountcode-container select {
-    width: 250px;
-    height: 100px;
-    font-size: 20px;
-    padding-left: 10px;
-    margin: 5px;
-    border-radius: 10px;
-  }
+.discountcode-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  max-width: 80%;
+  min-width: 100px;
+  padding: 20px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px rgb(1, 0, 27);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.discountcode-form-wrapper > h2 {
+  display: flex;
+  justify-content: center;
+  cursor: default;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 2em;
+  font-weight: lighter;
+  margin-top: 0.25em;
+  color: rgb(23, 28, 34);
+  background-color: transparent;
+}
+
+.discountcode-form-wrapper select {
+  width: 150px;
+  height: 25px;
+  margin-left: 345px;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgb(185, 202, 206);
+  border: 2px solid rgb(151, 166, 168);
+}
+
+.discountcode-form-wrapper form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.discountcode-form-wrapper input {
+  cursor: text;
+  margin-right: 0.25em;
+  margin-top: 0.75em;
+  height: 75px;
+  width: 100%;
+  font-size: 20px;
+  text-indent: 5%;
+  border: 2px solid rgb(185, 202, 206);
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.discountcode-form-wrapper ::placeholder {
+  color: rgba(51, 51, 51, 0.8);
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  text-indent: 5%;
+}
+
+.backbutton-wrapper input {
+  cursor: pointer;
+  margin-left: 120px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 242.92px;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgba(8, 34, 59, 0.8);
+  color: #fefefe;
+}
+
+.backbutton-wrapper input:hover {
+  background-color: #1f3d64;
+  color: #fefefe;
+  transform: scale(0.99);
+}
+
+.submitbutton-wrapper input {
+  cursor: pointer;
+  margin-left: 120px;
+  margin-top: 50px;
+  height: 75px;
+  width: 242px;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgba(14, 61, 105, 0.8);
+  color: #fefefe;
+}
+
+.submitbutton-wrapper input:hover {
+  background-color: #1f3d64;
+  color: #fefefe;
+  transform: scale(0.99);
+}

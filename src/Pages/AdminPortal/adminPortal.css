@@ -1,27 +1,61 @@
-.admin-container {
-  position: fixed;
+.admin-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 350px;
-  left: 39%;
-  top: 30%;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  margin-top: 200px;
 }
 
-.admin-container input {
-  width: 250px;
-  height: 50px;
+.admin-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 450px;
+  max-width: 80%;
+  min-width: 100px;
+  padding: 20px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px rgb(1, 0, 27);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.admin-form-wrapper > h2 {
+  display: flex;
+  justify-content: center;
+  cursor: default;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 2em;
+  font-weight: lighter;
+  margin-top: 0.25em;
+  color: rgb(2, 0, 22);
+  background-color: transparent;
+}
+
+.admin-form-wrapper form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.admin-form-wrapper input {
+  cursor: pointer;
+  margin-right: 0.25em;
+  margin-top: 1em;
+  height: 75px;
+  width: 100%;
+  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 20px;
-  padding-left: 10px;
-  margin: 5px;
-  border-radius: 10px;
+  font-weight: lighter;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(14, 61, 105, 0.8);
+  color: #fefefe;
 }
 
-.admin-container button {
-  width: 320px;
-  height: 50px;
-  margin-top: 15px;
+.admin-form-wrapper input:hover {
+  background-color: #1f3d64;
+  color: #fefefe;
+  transform: scale(0.99);
 }

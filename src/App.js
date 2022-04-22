@@ -78,6 +78,10 @@ function App() {
               <>
                 <Link to="/registration">Register</Link>
                 <Link to="/login">Sign In</Link>
+              </>
+            )}
+            {JSON.parse(localStorage.getItem('login')) === "true" && (
+              <>
                 <Link to="/account">Account</Link>
               </>
             )}

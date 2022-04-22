@@ -39,46 +39,52 @@ function AddProduct() {
     }
 
     return (
-        <div class="addproduct-container">
-            <h1>Add a New Product</h1>
-            <form>
-                <input type="text" required placeholder="Item Name"
-                    onChange={(e) => {
-                        setItemName(e.target.value);
-                    }} />
-            </form>
-            <form>
-                <input type="text" required placeholder="Description"
-                    onChange={(e) => {
-                        setItemDesc(e.target.value);
-                    }} />
-            </form>
-            <form>
-                <input type="text" required placeholder="Manufacturer Name"
-                    onChange={(e) => {
-                        setManuName(e.target.value);
-                    }} />
-            </form>
-            <form>
-                <input type="text" required placeholder="Price"
-                    onChange={(e) => {
-                        setPrice(e.target.value);
-                    }} />
-            </form>
-            <form onSubmit={onFormSubmit}>
-                <input type="file" name='image' onChange={(e) => {
-                    setFile(e.target.files[0])
-                }} />
-                <div>
-                    <button type="submit">Add Product</button>
-                </div>
-            </form>
-            <form action="http://localhost:3000/admin">
-                <input type="submit" value="Back to Admin Tools" />
-            </form>
-            {errorMsg && 
-                <h2>{errorMsg}</h2>
-            }
+        <div className="addproduct-wrapper">
+            <div className="addproduct-form-wrapper">
+                    <h2>Add a New Product</h2>
+                    <form>
+                        <input type="text" required placeholder="Item Name..."
+                            onChange={(e) => {
+                                setItemName(e.target.value);
+                            }} />
+                    </form>
+                    <form>
+                        <input type="text" required placeholder="Description..."
+                            onChange={(e) => {
+                                setItemDesc(e.target.value);
+                            }} />
+                    </form>
+                    <form>
+                        <input type="text" required placeholder="Manufacturer Name..."
+                            onChange={(e) => {
+                                setManuName(e.target.value);
+                            }} />
+                    </form>
+                    <form>
+                        <input type="text" required placeholder="Price..."
+                            onChange={(e) => {
+                                setPrice(e.target.value);
+                            }} />
+                    </form>
+                    <div className = "formsubmit-wrapper">
+                        <form onSubmit={onFormSubmit}>
+                            <input type="file" name='image' onChange={(e) => {
+                                setFile(e.target.files[0])
+                            }} />
+                            <div className="submitbutton-wrapper">
+                                <button type="submit">Add Product</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="backbutton-wrapper">
+                        <form action="http://localhost:3000/admin">
+                            <input type="submit" value="Back to Admin Tools" />
+                        </form>
+                    </div>
+                    {errorMsg && 
+                        <h2>{errorMsg}</h2>
+                    }
+            </div>
         </div>
     );
 }
