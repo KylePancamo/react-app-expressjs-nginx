@@ -1,7 +1,7 @@
 import "./HomePage.css"
 import React from "react";
 
-import cartImage from "../../images/cartimage.png"
+
 import 'font-awesome/css/font-awesome.min.css';
 
 function Home(props) {
