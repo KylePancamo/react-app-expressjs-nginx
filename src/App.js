@@ -57,6 +57,7 @@ function App() {
       cookies.remove('userId');
       localStorage.setItem('login', JSON.stringify("false"))
       window.location.reload(false);
+      alert("You have been logged out.")
     }
   }
 
