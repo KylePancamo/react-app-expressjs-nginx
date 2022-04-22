@@ -2,7 +2,6 @@ import "./ShoppingPage.css"
 import Header from './components/Header';
 import Main from './components/Main';
 import Basket from './components/Basket';
-import data from './data';
 import { useEffect, useState } from 'react';
 import Axios from "axios";
 
@@ -15,10 +14,9 @@ function ShoppingPage() {
       if (response.data) {
         setProducts(response.data.itemList);
       }
-
     })
   }, []);
-  //const { products } = data;
+
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
