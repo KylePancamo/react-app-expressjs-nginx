@@ -1,6 +1,5 @@
 .App {
     width: 100%;
-    height: auto;
 }
 
 
@@ -12,7 +11,6 @@
 }
 
 .navbar .links {
-    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -25,6 +23,14 @@
 
 .navbar a:hover {
     color: greenyellow;
+}
+
+.navbar button {
+    position: absolute;
+    align-self:center;
+    margin-right: 10px;
+    right: 0;
+    background-color: transparent;
 }
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
