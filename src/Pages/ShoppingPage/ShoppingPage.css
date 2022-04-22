@@ -33,29 +33,29 @@ img.small {
   max-height: 8rem;
 }
 
-button.add {
+.row button.add {
   background-color: aliceblue;
   border-radius: 3px;
   min-width: fit-content;
 }
 
-button.add:hover {
+.row button.add:hover {
   color: green;
   background-color: aliceblue;
 }
 
-button.remove {
+.row button.remove {
   border-radius: 3px;
   background-color: aliceblue;
   min-width: fit-content;
 }
 
-button.remove:hover {
+.row button.remove:hover {
   color: red;
   background-color: aliceblue;
 }
 
-button.badge {
+.row button.badge {
   background-color: #f04040;
   border: none;
   color: #11ff00;
