@@ -7,6 +7,7 @@ import Axios from "axios";
 
 function ShoppingPage(props) {
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (props.location.cart) {
@@ -62,7 +63,13 @@ function ShoppingPage(props) {
       <div className="Middleright">
         <div className="searchbar">
           <div className="fa fa-search"></div>
-          <input type="text" placeholder="Search..."></input>
+          <input 
+          type="text" 
+          placeholder="Search..."
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          />
           <div className="fa fa-times"></div>
         </div>
       </div>
@@ -70,7 +77,8 @@ function ShoppingPage(props) {
         <Main
           products={products}
           onAdd={onAdd}
-          cartItems={cartItems}>
+          cartItems={cartItems}
+          searchTerm={searchTerm}>
         </Main>
         <Basket
           cartItems={cartItems}
