@@ -20,10 +20,10 @@
   padding: 10%;
 }
 
-h2 {
+.HomePage h2 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-  background-color: rgb(184, 227, 240);
+  background-color:crimson;
   color: black;
   font-size: large;
   margin: none;
@@ -58,6 +58,10 @@ h3 {
   margin-top: 1vw;
 }
 
+.wrapper img {
+  border-radius: 10px;
+}
+
 .Frames button {
   height: 100;
   width: 100;
@@ -81,4 +85,12 @@ h3 {
   top: -3px;
   right: 16px;
   font-size: 18px
+}
+
+.product-view-button {
+  margin-top: 5px;
+  background-color:aqua;
+  color: green;
+  font-weight:650;
+  border-radius: 1.5px;
 }
