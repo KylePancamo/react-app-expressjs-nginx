@@ -1,13 +1,70 @@
 import Product from './Product';
+import React, { useState, useMemo } from 'react';
 
 export default function Main(props) {
   const { products, onAdd, cartItems, searchTerm } = props;
 
+  const useSortableData = (items, config = { key: 'null', direction: 'null' }) => {
+
+    const [sortedConfig, setSortedConfig] = useState(config);
+
+    const sortedItems = useMemo(() => {
+      let sortableItems = [...items];
+      if (sortedConfig !== null) {
+        sortableItems.sort((a, b) => {
+          if (a[sortedConfig.key] < b[sortedConfig.key]) {
+            return sortedConfig.direction === 'ascending' ? -1 : 1;
+          }
+          if (a[sortedConfig.key] > b[sortedConfig.key]) {
+            return sortedConfig.direction === 'ascending' ? 1 : -1;
+          }
+          return 0;
+        });
+      }
+      return sortableItems;
+    }, [products, sortedConfig]);
+
+    const requestSort = key => {
+      let direction = 'ascending';
+      if (sortedConfig.key === key && sortedConfig.direction === 'ascending') {
+        direction = 'descending';
+      }
+      setSortedConfig({ key, direction });
+    }
+    return { items: sortedItems, requestSort, sortedConfig }
+  }
+
+  const { items, requestSort, sortedConfig } = useSortableData(products);
+
+  const getClassNamesFor = (name) => {
+    if (!sortedConfig) {
+      return;
+    }
+    return sortedConfig.key === name ? sortedConfig.direction : undefined;
+  }
+
   return (
     <main className="block col-2">
+      <div className="sortable-items">
+        <button
+          onClick={() => requestSort('item_price')}
+          className={getClassNamesFor('item_price')}>
+          Price
+        </button>
+        <button
+          onClick={() => requestSort('item_name')}
+          className={getClassNamesFor('item_name')}>
+          Item Name
+        </button>
+        <button
+          onClick={() => requestSort('manufacturer')}
+          className={getClassNamesFor('manufacturer')}>
+          Manufacturer
+        </button>
+      </div>
       <h2>Products</h2>
       <div className="row">
-        {products.filter((val) => {
+        {items.filter((val) => {
           if (searchTerm == "") {
             return val
           } else if ((val.item_name.toLowerCase().includes(searchTerm.toLowerCase()))) {

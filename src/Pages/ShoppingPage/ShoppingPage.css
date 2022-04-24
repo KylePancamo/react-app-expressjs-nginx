@@ -161,3 +161,26 @@ img.small {
   background-color: lightseagreen;
   font-size: 17px;
 }
+
+.sortable-items {
+  text-align: center;
+}
+
+.sortable-items button{
+  border-radius: 1px;
+  background-color: antiquewhite;
+  color:#f04040;
+  font-weight: 600;
+}
+
+.sortable-items button.ascending::after {
+  content: '⬇️';
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.sortable-items button.descending::after {
+  content: '⬆️';
+  display: inline-block;
+  margin-left: 1em;
+}
