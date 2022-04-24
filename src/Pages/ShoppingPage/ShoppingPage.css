@@ -162,11 +162,16 @@ img.small {
   font-size: 17px;
 }
 
+
 .sortable-items {
   text-align: center;
 }
 
-.sortable-items button{
+.sortable-items .clear {
+  background-color: transparent;
+}
+
+.sortable-items button {
   border-radius: 1px;
   background-color: antiquewhite;
   color:#f04040;

@@ -70,7 +70,11 @@ function ShoppingPage(props) {
             setSearchTerm(event.target.value);
           }}
           />
-          <div className="fa fa-times"></div>
+          <button 
+          className="fa fa-times"
+          onClick={() => {
+            setSearchTerm("");
+          }}/>
         </div>
       </div>
       <div className="row">

@@ -4,9 +4,9 @@ import React, { useState, useMemo } from 'react';
 export default function Main(props) {
   const { products, onAdd, cartItems, searchTerm } = props;
 
-  const useSortableData = (items, config = { key: 'null', direction: 'null' }) => {
+  const [sortedConfig, setSortedConfig] = useState({ key: 'null', direction: 'null' });
 
-    const [sortedConfig, setSortedConfig] = useState(config);
+  const useSortableData = (items) => {
 
     const sortedItems = useMemo(() => {
       let sortableItems = [...items];
@@ -34,7 +34,7 @@ export default function Main(props) {
     return { items: sortedItems, requestSort, sortedConfig }
   }
 
-  const { items, requestSort, sortedConfig } = useSortableData(products);
+  const { items, requestSort} = useSortableData(products);
 
   const getClassNamesFor = (name) => {
     if (!sortedConfig) {
@@ -46,6 +46,12 @@ export default function Main(props) {
   return (
     <main className="block col-2">
       <div className="sortable-items">
+        <button className="clear"
+          onClick={() => {
+            setSortedConfig({ key: 'null', direction: 'null' })
+          }}>
+          <div className="fa fa-times"/>
+        </button>
         <button
           onClick={() => requestSort('item_price')}
           className={getClassNamesFor('item_price')}>
