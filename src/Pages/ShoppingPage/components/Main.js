@@ -45,6 +45,9 @@ export default function Main(props) {
 
   return (
     <main className="block col-2">
+      <div className="sortable-header">
+        <i>Sort by:</i>
+      </div>
       <div className="sortable-items">
         <button className="clear"
           onClick={() => {

@@ -80,7 +80,7 @@ img.small {
 }
 
 .apply input:hover {
-  color:chartreuse
+  color: chartreuse
 }
 
 .products td button {
@@ -174,7 +174,7 @@ img.small {
 .sortable-items button {
   border-radius: 1px;
   background-color: antiquewhite;
-  color:#f04040;
+  color: #f04040;
   font-weight: 600;
 }
 
@@ -188,4 +188,20 @@ img.small {
   content: '⬆️';
   display: inline-block;
   margin-left: 1em;
+}
+
+.sortable-header {
+  text-align: center;
+  font-weight: 400;
+}
+
+.ShoppingPage h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  background-color: rgb(184, 227, 240);
+  color: black;
+  font-size: large;
+  margin: none;
+  border-radius: none;
+  padding: 1%;
 }
