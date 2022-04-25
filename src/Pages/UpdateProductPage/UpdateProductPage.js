@@ -94,11 +94,6 @@ function UpdateProduct() {
                 <div className="submitbutton-wrapper">
                     <button onClick={updateproduct}> <b>Update Product</b></button>
                 </div>
-                <div className="backbutton-wrapper">
-                    <form action="http://localhost:3000/admin">
-                        <input type="submit" value="Back to Admin Tools" />
-                    </form>
-                </div>
                 <div className="errormessage"><h2>{errorMsg}</h2></div>
             </div>
             <div className="updateproduct-form-item-wrapper">

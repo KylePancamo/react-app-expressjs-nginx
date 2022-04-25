@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.col-1 {
+.col-1{
   flex: 1;
 }
 
@@ -22,7 +22,6 @@
   margin: 0.5rem;
   border-radius: 0.5rem;
   flex: 1 0 21%;
-  background-color: rgb(117, 208, 238);
 }
 
 .text-right {
@@ -112,6 +111,10 @@ img.small {
   word-break: break-all;
 }
 
+.products button {
+  border-radius: 1.5px;
+}
+
 .products img {
   width: 100px;
   min-height: 13vh;
@@ -121,9 +124,15 @@ img.small {
 
 .product-button {
   margin-top: 5px;
-  background-color: honeydew;
+  background-color: transparent;
   margin-left: 9px;
   border-radius: 1.5px;
+}
+
+.product-button:hover {
+  background-color: transparent;
+  color: black;
+  text-decoration: underline;
 }
 
 /* Add a black background color to the top navigation bar */
@@ -135,13 +144,12 @@ img.small {
   padding: 0.5rem;
   border: none;
   flex-grow: 1;
-  border-radius: 0;
-  width: 99.4;
+  border-radius: 0.5rem;
+  width: 15%;
   color: white;
   right: 100px;
-  top: 0.6rem;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 35px;
 }
 
 /* Style the "active" element to highlight the current page */
@@ -173,19 +181,19 @@ img.small {
 
 .sortable-items button {
   border-radius: 1px;
-  background-color: antiquewhite;
-  color: #f04040;
+  background-color: white;
+  color: black;
   font-weight: 600;
 }
 
 .sortable-items button.ascending::after {
-  content: '⬇️';
   display: inline-block;
+  background-color: transparent;
   margin-left: 1em;
 }
 
 .sortable-items button.descending::after {
-  content: '⬆️';
+  background-color: transparent;
   display: inline-block;
   margin-left: 1em;
 }
@@ -198,10 +206,20 @@ img.small {
 .ShoppingPage h2 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-  background-color: rgb(184, 227, 240);
-  color: black;
+  background-color:whitesmoke;
+  color:#2196F3;
   font-size: large;
-  margin: none;
   border-radius: none;
   padding: 1%;
+}
+
+.row h2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ShoppingPage {
+  background-color:antiquewhite;
+  min-height: 100vh;
 }

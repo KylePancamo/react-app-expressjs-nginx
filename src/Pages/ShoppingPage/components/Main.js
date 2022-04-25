@@ -45,6 +45,7 @@ export default function Main(props) {
 
   return (
     <main className="block col-2">
+      <h2>Products</h2>
       <div className="sortable-header">
         <i>Sort by:</i>
       </div>
@@ -71,7 +72,7 @@ export default function Main(props) {
           Manufacturer
         </button>
       </div>
-      <h2>Products</h2>
+      
       <div className="row">
         {items.filter((val) => {
           if (searchTerm == "") {

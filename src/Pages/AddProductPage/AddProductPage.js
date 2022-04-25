@@ -25,65 +25,60 @@ function AddProduct() {
         formData.append('itemInfo', itemDesc);
         formData.append('itemInfo', price);
 
-        
+
         Axios.post("http://localhost:5000/addproduct", formData).then((response) => {
-                if (response.data.message) {
-                    setErrorMsg(response.data.message);
-                } else {
-                    setItemName("");
-                    setItemDesc("");
-                    setPrice("");
-                    setErrorMsg("Item added successfully");
-                }
-            });
+            if (response.data.message) {
+                setErrorMsg(response.data.message);
+            } else {
+                setItemName("");
+                setItemDesc("");
+                setPrice("");
+                setErrorMsg("Item added successfully");
+            }
+        });
     }
 
     return (
         <div className="addproduct-wrapper">
             <div className="addproduct-form-wrapper">
-                    <h2>Add a New Product</h2>
-                    <form>
-                        <input type="text" required placeholder="Item Name..."
-                            onChange={(e) => {
-                                setItemName(e.target.value);
-                            }} />
+                <h2>Add a New Product</h2>
+                <form>
+                    <input type="text" required placeholder="Item Name..."
+                        onChange={(e) => {
+                            setItemName(e.target.value);
+                        }} />
+                </form>
+                <form>
+                    <input type="text" required placeholder="Description..."
+                        onChange={(e) => {
+                            setItemDesc(e.target.value);
+                        }} />
+                </form>
+                <form>
+                    <input type="text" required placeholder="Manufacturer Name..."
+                        onChange={(e) => {
+                            setManuName(e.target.value);
+                        }} />
+                </form>
+                <form>
+                    <input type="text" required placeholder="Price..."
+                        onChange={(e) => {
+                            setPrice(e.target.value);
+                        }} />
+                </form>
+                <div className="formsubmit-wrapper">
+                    <form onSubmit={onFormSubmit}>
+                        <input type="file" name='image' onChange={(e) => {
+                            setFile(e.target.files[0])
+                        }} />
+                        <div className="submitbutton-wrapper">
+                            <button type="submit">Add Product</button>
+                        </div>
                     </form>
-                    <form>
-                        <input type="text" required placeholder="Description..."
-                            onChange={(e) => {
-                                setItemDesc(e.target.value);
-                            }} />
-                    </form>
-                    <form>
-                        <input type="text" required placeholder="Manufacturer Name..."
-                            onChange={(e) => {
-                                setManuName(e.target.value);
-                            }} />
-                    </form>
-                    <form>
-                        <input type="text" required placeholder="Price..."
-                            onChange={(e) => {
-                                setPrice(e.target.value);
-                            }} />
-                    </form>
-                    <div className = "formsubmit-wrapper">
-                        <form onSubmit={onFormSubmit}>
-                            <input type="file" name='image' onChange={(e) => {
-                                setFile(e.target.files[0])
-                            }} />
-                            <div className="submitbutton-wrapper">
-                                <button type="submit">Add Product</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="backbutton-wrapper">
-                        <form action="http://localhost:3000/admin">
-                            <input type="submit" value="Back to Admin Tools" />
-                        </form>
-                    </div>
-                    {errorMsg && 
-                        <h2>{errorMsg}</h2>
-                    }
+                </div>
+                {errorMsg &&
+                    <h2>{errorMsg}</h2>
+                }
             </div>
         </div>
     );

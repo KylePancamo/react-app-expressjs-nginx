@@ -49,12 +49,7 @@ function DiscountCode()
                     </form>
                     <div className = "submitbutton-wrapper">
                         <form onSubmit={submitDiscount}>
-                            <input type="submit" value="Create Discount Code" />
-                        </form>
-                    </div>
-                    <div className = "backbutton-wrapper">
-                        <form action="http://localhost:3000/admin">
-                            <input type="submit" value="Back to Admin Tools" />
+                            <button type="submit">Create Discount Code</button>
                         </form>
                     </div>
                 </div>
