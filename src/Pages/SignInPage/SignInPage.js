@@ -68,8 +68,11 @@ function SignIn() {
 					</div>
 					<div className="submit">
 						<button onClick={login}>Login</button>
-						<h1>{loginStatus}</h1>
+                        <div className="login-status">
+						    {loginStatus}
+                        </div>
 					</div>
+                    
 				</form>
 			</div>
 		</div>
