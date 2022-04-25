@@ -4,7 +4,7 @@
   position: fixed;
   left: 25%;
   margin-top: 5%;
-  max-width: 700px;
+  max-width: 40vw;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 25px 30px;
@@ -37,7 +37,7 @@
   margin: 20px 0 12px 0;
 }
 
-form .user-details .input-box {
+form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
@@ -186,4 +186,14 @@ form .button input:hover {
 .signoutbutton button:hover {
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #314fa1);
+}
+
+.Update {
+  text-align: right;
+}
+
+.Update button {
+  border-radius: 1px;
+  font-size: x-large;
+  background-color: transparent;
 }
