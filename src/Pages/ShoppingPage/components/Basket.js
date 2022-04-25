@@ -9,7 +9,7 @@ export default function Basket(props) {
   const [discountCode, setDiscountCode] = useState();
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.item_price, 0);
   const taxPrice = itemsPrice * 0.0825;
-  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
+  const shippingPrice = itemsPrice > 100 ? 0 : 5;
 
   const checkOut = async () => {
     if (JSON.parse(localStorage.getItem('login')) === "true") {
