@@ -458,6 +458,13 @@ app.get("/DoD-items", (req, res) => {
         }
     )
 })
+
+app.post("/update-user", (req, res) => {
+    db.query(
+        
+    )
+})
+
 // start express server on port 5000
 server.listen(5000, () => {
     console.log('NodeJS server running');
