@@ -89,7 +89,7 @@ function App() {
             )}
             {JSON.parse(localStorage.getItem('login')) === "true" && (
               <>
-                <Link to="/order-history">Order History</Link>
+                
                 <Link to="/account">Account</Link>
               </>
             )}

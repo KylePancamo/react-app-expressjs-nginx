@@ -5,6 +5,10 @@ import "./OrderHistory.css"
 import 'font-awesome/css/font-awesome.min.css';
 import { Redirect } from 'react-router-dom'
 
+import {
+    Link,
+  } from "react-router-dom";
+
 function OrderHistory(props) {
 
     useEffect(() => {
@@ -137,8 +141,11 @@ function OrderHistory(props) {
                             </>
                         }
                     </tbody>
+                    <Link to="/account">Back to Account Page</Link>
                 </table>
+                
             </div>
+            
         </div>
     );
 }

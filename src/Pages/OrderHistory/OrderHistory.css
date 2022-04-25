@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    flex: 21%;
+    flex: 21%; 
 }
 
 .order-list .tables {

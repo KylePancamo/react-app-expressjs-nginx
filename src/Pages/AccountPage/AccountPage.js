@@ -1,8 +1,12 @@
+import "../../App.js";
 import React, { useState, useEffect } from "react";
 import "./AccountPage.css"
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import {
+  Link,
+} from "react-router-dom";
 function Account() {
 
   const [firstName, setFirstName] = useState("");
@@ -12,12 +16,6 @@ function Account() {
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
 
-  const viewOrderHistory = (e) => {
-    history.push({
-      pathname: '/order-history',
-
-    })
-  }
 
   let history = useHistory();
 
@@ -71,9 +69,10 @@ function Account() {
               </div>
             </form>
           </div>
-          <button onClick={viewOrderHistory}>View Order History</button>
+          <Link to="/order-history">View Order History</Link>
         </div>
       </div>
+
   );
 }
 
