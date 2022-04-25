@@ -460,9 +460,46 @@ app.get("/DoD-items", (req, res) => {
 })
 
 app.post("/update-user", (req, res) => {
+    //console.log(req.session.user);
+    const accountId = req.body.accountId;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const phoneNum = req.body.phoneNum;
+    const address = req.body.address;
+
     db.query(
-        
+        "SELECT * FROM account WHERE account_id = ?",
+        accountId,
+        (err, result) => {
+            if (err) {
+                console.log(error);
+            }
+            if (result.length <= 0) {
+                return res.send({ message: "Error: User not found" });
+            }
+            else {
+                const data = [
+                    firstName,
+                    lastName,
+                    phoneNum,
+                    address,
+                    accountId
+                ];
+
+                const query = "UPDATE account SET first_name = ?, last_name = ?, phone_num = ?, address = ? WHERE account_id = ?;";
+                db.query(query, data,
+                    (err, result) => {
+                        if (err) {
+                            res.send({ message: "Error: User information failed to update" })
+                        } else {
+                            res.status(200).send("Success");
+                        }
+                    }
+                );
+            }
+        }
     )
+
 })
 
 // start express server on port 5000

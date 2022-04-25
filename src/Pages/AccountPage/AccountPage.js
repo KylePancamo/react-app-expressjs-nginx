@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 function Account() {
 
+  const [accountId, setAccountId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ function Account() {
         history.push("/");
       }
       else {
+        setAccountId(response.data.user.account_id);
         setFirstName(response.data.user.first_name);
         setLastName(response.data.user.last_name);
         setUsername(response.data.user.username);
@@ -38,8 +40,21 @@ function Account() {
 
   const Update = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:5000/update-user").then((response) => {
-      
+    Axios.post("http://localhost:5000/update-user", {
+      accountId: accountId,
+      firstName: firstName,
+      lastName: lastName,
+      phoneNum: phoneNum,
+      address: address,
+
+    }).then((response) => {
+      if(response.data.message)
+      {
+        console.log(response.data.message);
+      }
+      else {
+        window.location.reload(true);
+      }
     })
   }
 
