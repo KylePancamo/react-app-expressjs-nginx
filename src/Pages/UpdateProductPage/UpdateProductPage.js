@@ -11,16 +11,17 @@ function UpdateProduct() {
     const [errorMsg, setErrorMsg] = useState("");
 
     const [products, setProducts] = useState([]);
-
     useEffect(() => {
         Axios.get("http://localhost:5000/get-items").then((response) => {
             if (response.data) {
                 setProducts(response.data.itemList);
+                console.log("Consoles")
             }
         })
-    }, []);
+    }, [!productID]);
 
-    const updateproduct = () => {
+    const updateproduct = (e) => {
+        e.preventDefault();
         Axios.post("http://localhost:5000/updateproduct",
             {
                 productID: productID,
@@ -36,7 +37,6 @@ function UpdateProduct() {
                     setItemDesc("");
                     setPrice("");
                     setErrorMsg("Product updated successfully");
-                    window.location.reload(true);
                 }
             });
     };
@@ -46,8 +46,8 @@ function UpdateProduct() {
             {
                 productID: productID,
             }).then((response) => {
-                if (response.data.message) {
-                    setErrorMsg(response.data.message);
+                if (response.data.err) {
+                    setErrorMsg(response.data.err);
                 } else {
                     setModelName(response.data.modelName);
                     setItemDesc(response.data.itemDesc);
