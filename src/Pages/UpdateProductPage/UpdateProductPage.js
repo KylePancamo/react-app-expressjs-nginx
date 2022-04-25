@@ -1,15 +1,24 @@
 import "./UpdateProductPage.css"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 
-function UpdateProduct()
-{
+function UpdateProduct() {
     const [productID, setProductID] = useState("");
     const [modelName, setModelName] = useState("");
     const [manuName, setManuName] = useState("");
     const [itemDesc, setItemDesc] = useState("");
     const [price, setPrice] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        Axios.get("http://localhost:5000/get-items").then((response) => {
+            if (response.data) {
+                setProducts(response.data.itemList);
+            }
+        })
+    }, []);
 
     const updateproduct = () => {
         Axios.post("http://localhost:5000/updateproduct",
@@ -27,15 +36,16 @@ function UpdateProduct()
                     setItemDesc("");
                     setPrice("");
                     setErrorMsg("Product updated successfully");
+                    window.location.reload(true);
                 }
             });
     };
 
     const searchproduct = () => {
         Axios.post("http://localhost:5000/searchproduct",
-        {
-            productID: productID,
-        }).then((response) => {
+            {
+                productID: productID,
+            }).then((response) => {
                 if (response.data.message) {
                     setErrorMsg(response.data.message);
                 } else {
@@ -48,50 +58,87 @@ function UpdateProduct()
     };
 
     return (
-            <div className = "updateproduct-wrapper">
-                <div className = "updateproduct-form-wrapper">
-                    <h2>Update an Existing Product</h2>
+        <div className="updateproduct-wrapper">
+            <div className="updateproduct-form-wrapper">
+                <h2>Update an Existing Product</h2>
+                <form>
+                    <input type="number" placeholder="Enter a Product ID" value={productID}
+                        onChange={(e) => {
+                            setProductID(e.target.value);
+                        }} />
+                </form>
+                <div className="searchbutton-wrapper">
+                    <button onClick={searchproduct}> <b>Search</b></button>
+                </div>
+                &nbsp;
+                <div className="product-display">
                     <form>
-                            <input type="number" placeholder="Enter a Product ID" value={productID}
+                        <input type="text" value={modelName}
                             onChange={(e) => {
-                                setProductID(e.target.value);
-                            }}/>
+                                setModelName(e.target.value);
+                            }} />
                     </form>
-                    <div className = "searchbutton-wrapper">
-                            <button onClick={searchproduct}> <b>Search</b></button>
-                    </div>
-                    &nbsp;
-                    <div className = "product-display">
-                        <form>
-                                <input type="text" value={modelName} 
-                                onChange={(e) => {
-                                    setModelName(e.target.value);
-                                }}/>
-                        </form>
-                        <form>
-                                <input type="text" value={itemDesc} 
-                                onChange={(e) => {
-                                    setItemDesc(e.target.value);
-                                }}/>
-                        </form>
-                        <form>
-                                <input type="text" value={price} 
-                                onChange={(e) => {
-                                    setPrice(e.target.value);
-                                }}/>
-                        </form>
-                    </div>
-                    <div className = "submitbutton-wrapper">
-                            <button onClick={updateproduct}> <b>Update Product</b></button>
-                    </div>
-                    <div className = "backbutton-wrapper"> 
-                        <form action="http://localhost:3000/admin">
-                            <input type="submit" value="Back to Admin Tools" />
-                        </form>
-                    </div>
-                    <div className = "errormessage"><h2>{errorMsg}</h2></div>
+                    <form>
+                        <input type="text" value={itemDesc}
+                            onChange={(e) => {
+                                setItemDesc(e.target.value);
+                            }} />
+                    </form>
+                    <form>
+                        <input type="text" value={price}
+                            onChange={(e) => {
+                                setPrice(e.target.value);
+                            }} />
+                    </form>
+                </div>
+                <div className="submitbutton-wrapper">
+                    <button onClick={updateproduct}> <b>Update Product</b></button>
+                </div>
+                <div className="backbutton-wrapper">
+                    <form action="http://localhost:3000/admin">
+                        <input type="submit" value="Back to Admin Tools" />
+                    </form>
+                </div>
+                <div className="errormessage"><h2>{errorMsg}</h2></div>
+            </div>
+            <div className="updateproduct-form-item-wrapper">
+                <h2>List of Items:</h2>
+                <div className="container">
+                    <table className="tables">
+                        <thead>
+                            <tr className="tr">
+                                <th>
+                                    Item Id
+                                </th>
+                                <th>
+                                    Item Name
+                                </th>
+                                <th>
+                                    Item Description
+                                </th>
+                                <th>
+                                    Item Price
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                products.map(index => {
+                                    return (
+                                        <tr>
+                                            <td>{index.id}</td>
+                                            <td>{index.item_name}</td>
+                                            <td>{index.item_description}</td>
+                                            <td>{index.item_price}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
     );
 }
 export default UpdateProduct;

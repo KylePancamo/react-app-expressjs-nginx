@@ -1,7 +1,6 @@
 .updateproduct-wrapper {
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
@@ -10,16 +9,17 @@
 .updateproduct-form-wrapper {
   display: flex;
   flex-direction: column;
-  width: 500px;
   max-width: 80%;
-  min-width: 100px;
+  min-width: 25vw;
   padding: 20px 40px;
   border-radius: 6px;
   box-shadow: 0px 8px 36px rgb(1, 0, 27);
   background: rgba(255, 255, 255, 0.7);
+  margin-right: 10vw;
 }
 
-.updateproduct-form-wrapper > h2 {
+.updateproduct-form-wrapper > h2,
+.updateproduct-form-item-wrapper > h2 {
   display: flex;
   justify-content: center;
   cursor: default;
@@ -37,7 +37,7 @@
   flex-wrap: wrap;
 }
 
-.updateproduct-form-wrapper input {
+.updateproduct-form-wrapper input{
   cursor: text;
   margin-right: 0.25em;
   margin-top: 0.75em;
@@ -51,7 +51,8 @@
   color: #000000;
 }
 
-.updateproduct-form-wrapper ::placeholder {
+.updateproduct-form-wrapper ::placeholder,
+.updateproduct-form-item-wrapper ::placeholder {
   color: rgba(51, 51, 51, 0.8);
   font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
   text-indent: 5%;
@@ -60,10 +61,10 @@
 
 .searchbutton-wrapper button {
   cursor: pointer;
-  margin-left: 200px;
+  margin-left: 15vw;
   margin-top: 10px;
   height: 30px;
-  width: 100px;
+  width: 10vw;
   font-size: 20px;
   border: none;
   border-radius: 4px;
@@ -80,12 +81,14 @@
 
 
 .backbutton-wrapper input {
+  display: flex;
   cursor: pointer;
   margin-left: 120px;
   margin-top: 10px;
   margin-bottom: 30px;
   height: 40px;
-  width: 242.92px;
+  width: 12.65vw;
+  overflow: wrap;
   font-size: 20px;
   border: none;
   border-radius: 4px;
@@ -115,7 +118,7 @@
   margin-left: 120px;
   margin-top: 50px;
   height: 75px;
-  width: 242.91px;
+  width: 12.65vw;
   font-size: 20px;
   border: none;
   border-radius: 4px;
@@ -140,4 +143,27 @@
   margin-top: 0.25em;
   color: rgb(23, 28, 34);
   background-color: transparent;
+}
+.updateproduct-form-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 50vw;
+  min-height: 25vh;
+  padding: 20px 15px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px rgb(1, 0, 27);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.updateproduct-form-item-wrapper .tables {
+  text-align: left;
+  font-size: x-large;
+} 
+
+.updateproduct-form-item-wrapper th {
+  text-align: center;
+}
+
+.updateproduct-form-item-wrapper td {
+  text-align: center;
 }
