@@ -1,5 +1,6 @@
 .HomePage {
   min-width: fit-content;
+  min-height: 100vh;
   background-color: rgb(211, 254, 255);
   font-family: 'Times New Roman', Times, serif;
   margin: 0;
@@ -9,21 +10,13 @@
 .row {
   display: flex;
   justify-content: space-between;
-  flex-wrap:wrap;
-  flex:1 0 21%;
+  flex-wrap: wrap;
+  flex: 1 0 21%;
 }
 
 .HomeHeader header {
-  text-align: left;
   background-image: url(../../images/oceanimagedesktop.jpg);
-  background-blend-mode: lighten;
   background-position: center;
-  background-size: cover;
-  opacity: 88%;
-  color: black;
-  font-size: x-large;
-  margin: none;
-  border-radius: none;
   padding: 10%;
 }
 
@@ -51,29 +44,23 @@ h3 {
 .Frames {
   display: flex;
   flex-direction: column;
-  color: black;
-  font-size: large;
-  align-items: left;
-  text-align: center;
-  width: 100%;
-  min-height: 60vh;
 }
 
 .frame-sets {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: left;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-
-.frame-sets div{
-  margin: auto;
+.wrapper {
+  flex-basis: 33.3333%;
+  margin-top: 1vw;
 }
 
 .Frames button {
   height: 100;
   width: 100;
-
 }
 
 .hotbar-button {
@@ -95,5 +82,3 @@ h3 {
   right: 16px;
   font-size: 18px
 }
-
-

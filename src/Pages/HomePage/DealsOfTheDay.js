@@ -27,7 +27,7 @@ function DealsOfTheDay() {
         <div className="frame-sets">
             {productDeals.map(index => {
                 return (
-                    <div key={index.id}>
+                    <div className="wrapper" key={index.id}>
                         <div>
                             <img
                                 src={index.pathname}
