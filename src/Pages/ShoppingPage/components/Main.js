@@ -76,6 +76,8 @@ export default function Main(props) {
         {items.filter((val) => {
           if (searchTerm == "") {
             return val
+          } else if ((val.manufacturer.toLowerCase().includes(searchTerm.toLowerCase()))) {
+            return val
           } else if ((val.item_name.toLowerCase().includes(searchTerm.toLowerCase()))) {
             return val
           }
