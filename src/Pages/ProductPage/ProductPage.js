@@ -20,17 +20,19 @@ function Product(props) {
     return (
         <div className="product-background">
             <div className="ProductPage">
-                {/* create an overall panel, with header 2, the image, and the button inside of it */}
-                <div className="container1">
-                    <img
-                        src={products.pathname}
-                        width={500} />
-                </div>
-                <div className="container2">
-                    <p><b>Names: </b> {products.item_name}</p>
-                    <p><b>Manufacturer: </b>{products.manufacturer} </p>
-                    <p><b>Cost: </b>{products.item_price}</p>
-                    <button onClick={addToCart}>Add to Cart</button>
+                <div className="productrow">
+                     {/* create an overall panel, with header 2, the image, and the button inside of it */}
+                     <div className="container1">
+                        <img
+                            src={products.pathname}
+                         width={500} />
+                    </div>
+                    <div className="container2">
+                        <p><b>Names: </b> {products.item_name}</p>
+                        <p><b>Manufacturer: </b>{products.manufacturer} </p>
+                        <p><b>Cost: </b>{products.item_price}</p>
+                        <button onClick={addToCart}>Add to Cart</button>
+                    </div>
                 </div>
             </div>
         </div>
