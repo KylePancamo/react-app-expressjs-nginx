@@ -23,6 +23,7 @@ function AddProduct() {
         formData.append("image", file);
         formData.append('itemInfo', itemName);
         formData.append('itemInfo', itemDesc);
+        formData.append('itemInfo', manuName)
         formData.append('itemInfo', price);
 
 
@@ -32,6 +33,7 @@ function AddProduct() {
             } else {
                 setItemName("");
                 setItemDesc("");
+                setManuName("");
                 setPrice("");
                 setErrorMsg("Item added successfully");
             }

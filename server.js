@@ -232,28 +232,26 @@ var upload = multer({
 app.post("/addproduct", upload.single('image'), (req, res) => {
     if (req.fileValidationError) {
         return res.send({ message: req.fileValidationError });
-    } else if (!req.file) {
-        console.log("No File added");
-    }
-    else {
-        console.log("File added");
     }
 
-    const modelName = req.body.itemInfo[0];
+    const itemName = req.body.itemInfo[0];
     const itemDesc = req.body.itemInfo[1];
-    const price = req.body.itemInfo[2];
+    const manufacturer = req.body.itemInfo[2];
+    const price = req.body.itemInfo[3];
     const path = "images/" + req.file.filename;
     //console.log(req.file.filename);
     const data = [
-        modelName,
+        itemName,
         itemDesc,
+        manufacturer,
         price
     ];
-    const query = "INSERT INTO item_template (item_name, item_description, item_price) VALUES (?, ?, ?);";
+    const query = "INSERT INTO item_template (item_name, manufacturer, item_description, item_price) VALUES (?, ?, ?, ?);";
     db.query(
         query, data,
         (err, result) => {
             if (err) {
+                console.log(err);
                 res.send({ message: "Error: Failed to insert item" });
             }
             else {
