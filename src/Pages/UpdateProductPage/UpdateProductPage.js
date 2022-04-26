@@ -77,18 +77,21 @@ function UpdateProduct() {
                             onChange={(e) => {
                                 setModelName(e.target.value);
                             }} />
+                            Model Name
                     </form>
                     <form>
                         <input type="text" value={itemDesc}
                             onChange={(e) => {
                                 setItemDesc(e.target.value);
                             }} />
+                            Item Description
                     </form>
                     <form>
                         <input type="text" value={price}
                             onChange={(e) => {
                                 setPrice(e.target.value);
                             }} />
+                            Item Price
                     </form>
                 </div>
                 <div className="submitbutton-wrapper">
@@ -104,6 +107,9 @@ function UpdateProduct() {
                             <tr className="tr">
                                 <th>
                                     Item Id
+                                </th>
+                                <th>
+                                    Image
                                 </th>
                                 <th>
                                     Item Name
@@ -122,9 +128,13 @@ function UpdateProduct() {
                                     return (
                                         <tr>
                                             <td>{index.id}</td>
+                                            <td><img
+                                                src={index.pathname}
+                                                width={50} />
+                                            </td>
                                             <td>{index.item_name}</td>
                                             <td>{index.item_description}</td>
-                                            <td>{index.item_price}</td>
+                                            <td>${index.item_price}</td>
                                         </tr>
                                     )
                                 })

@@ -28,7 +28,7 @@ import cookieParser from "cookie-parser";
 function App() {
   const [loginState, setLoginState] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState({});
   Axios.defaults.withCredentials = true;
 
   const history = useHistory();
@@ -38,19 +38,19 @@ function App() {
       if (response.data.user) {
         localStorage.setItem('login', JSON.stringify("true"));
 
-          setUserInfo(response.data.user);
-          if (response.data.user.username == "admin") {
-            //setIsAdmin(true);
-            localStorage.setItem('admin', JSON.stringify("true"));
-          }
+        setUserInfo(response.data.user);
+        if (response.data.user.username == "admin") {
+          //setIsAdmin(true);
+          localStorage.setItem('admin', JSON.stringify("true"));
         }
-        else {
-          logout();
-        }
-      }).catch((err) => {
-        console.log(err);
+      }
+      else {
         logout();
-      })
+      }
+    }).catch((err) => {
+      console.log(err);
+      logout();
+    })
   }, [JSON.parse(localStorage.getItem('login'))])
 
   const logout = (e) => {
@@ -89,11 +89,11 @@ function App() {
             )}
             {JSON.parse(localStorage.getItem('login')) === "true" && (
               <>
-                
+
                 <Link to="/account">Account</Link>
               </>
             )}
-            {JSON.parse(localStorage.getItem('admin')) === "true" && 
+            {JSON.parse(localStorage.getItem('admin')) === "true" &&
               <>
                 <Link to="/admin">Admin Portal</Link>
               </>
@@ -101,9 +101,13 @@ function App() {
 
           </div>
           {JSON.parse(localStorage.getItem('login')) === "true" &&
-            <button onClick={logout}>Logout</button>
+            <div className="logout">
+              <caption>Howdy, {userInfo.last_name}</caption>
+              <button onClick={logout}>Logout</button>
+            </div>
+
           }
-          
+
         </div>
         <Switch>
           <Route path="/order-history" component={() => <OrderHistory />} />

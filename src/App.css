@@ -24,12 +24,22 @@
     color: greenyellow;
 }
 
-.navbar button {
+.navbar .logout  {
+    display: flex;
+    margin-right: 20px;
     position: absolute;
     align-self:center;
-    margin-right: 10px;
-    right: 0;
-    background-color: transparent;
+    justify-content: space-between;
+    right: 0; 
+}
+
+.logout caption {
+    min-width: fit-content;
+    margin-right: 10vw;
+}
+
+.navbar button {
+    background-color: transparent !important;
 }
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */

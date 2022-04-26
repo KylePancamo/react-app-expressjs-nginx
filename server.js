@@ -392,8 +392,6 @@ app.post("/checkout", (req, res) => {
 })
 
 app.post("/discounts", (req, res) => {
-    console.log(req.body)
-
     const codeName = req.body.codename;
     const percentOff = req.body.discountamount;
 
@@ -500,6 +498,20 @@ app.post("/update-user", (req, res) => {
         }
     )
 
+})
+
+app.post("/delete-discount",  (req, res) => {
+    db.query(
+        `DELETE FROM discounts WHERE discount_code = ?;`,
+        req.body.data,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.send(result);
+            }
+        }
+    )
 })
 
 // start express server on port 5000
