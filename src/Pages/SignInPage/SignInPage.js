@@ -45,8 +45,8 @@ function SignIn() {
         <div className="background-login">
             <div className="signin-wrapper">
                 <div className="signin-form-wrapper">
-                    <h2>Login</h2>
                     <form>
+                    <h2>Login</h2>
                         <div className="username">
                             <label><b>Username:</b></label>
                             <input
