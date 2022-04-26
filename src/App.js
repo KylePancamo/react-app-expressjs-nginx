@@ -13,7 +13,7 @@ import AddProduct from "./Pages/AddProductPage/AddProductPage";
 import UpdateProduct from "./Pages/UpdateProductPage/UpdateProductPage";
 import "./GeneralStyles.css";
 import "./App.css"
-import home from "../src/images/homebutton.png"
+import home from "../src/images/earth-icon.png"
 import Cookies from 'universal-cookie';
 
 import {
@@ -79,31 +79,31 @@ function App() {
                 height="50" />
             </Link>
             {/* <Link to="/product-page">Product</Link> */}
-            <Link to="/shopping-page">Shopping Page</Link>
+            <Link to="/shopping-page">SHOP</Link>
             {/* <Link to="/order-history">Order History</Link> */}
             {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) && (
               <>
-                <Link to="/registration">Register</Link>
-                <Link to="/login">Sign In</Link>
+                <Link to="/registration">REGISTER</Link>
+                <Link to="/login">SIGN IN</Link>
               </>
             )}
             {JSON.parse(localStorage.getItem('login')) === "true" && (
               <>
 
-                <Link to="/account">Account</Link>
+                <Link to="/account">PROFILE</Link>
               </>
             )}
             {JSON.parse(localStorage.getItem('admin')) === "true" &&
               <>
-                <Link to="/admin">Admin Portal</Link>
+                <Link to="/admin">ADMIN TOOLS</Link>
               </>
             }
 
           </div>
           {JSON.parse(localStorage.getItem('login')) === "true" &&
             <div className="logout">
-              <caption>Howdy, {userInfo.last_name}</caption>
-              <button onClick={logout}>Logout</button>
+              <label>Howdy, {userInfo.last_name}</label>
+              <button onClick={logout}>LOG OUT</button>
             </div>
 
           }

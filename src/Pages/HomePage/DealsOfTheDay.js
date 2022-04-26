@@ -28,21 +28,21 @@ function DealsOfTheDay() {
             {productDeals.map(index => {
                 return (
                     <div className="wrapper" key={index.id}>
-                        <i>{index.percentOff}%  Percent off</i>
+                        <i>{index.percentOff}%  OFF</i>
                         <div>
                             <img
                                 src={index.pathname}
-                                width={100}
-                                height={100}
+                                width={250}
+                                height={250}
                             />
                         </div>
                         <div>
-                            {index.item_name}
+                            <h2>{index.item_name}</h2>
                         </div>
                         <div>
                             Discounted Price: ${index.item_price}
                         </div>
-                        <button onClick={() => viewProduct(index)} className="product-view-button">View product</button>
+                        <button onClick={() => viewProduct(index)} className="product-view-button">VIEW</button>
                     </div>
 
                 )

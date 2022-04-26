@@ -4,9 +4,9 @@
 
 /* NAVBAR */
 .navbar {
-    background-color: dodgerblue;
+    background-color: rgb(45, 64, 83);
     display: flex;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .navbar .links {
@@ -15,13 +15,15 @@
 }
 
 .navbar a {
-    margin-left: 20px;
+    font-weight: lighter;
+    margin-left: 40px;
     text-decoration: none;
     color: white;
 }
 
 .navbar a:hover {
-    color: greenyellow;
+    color: rgb(109, 149, 161);
+    transform: scale(0.99);
 }
 
 .navbar .logout  {
@@ -29,18 +31,32 @@
     margin-right: 20px;
     position: absolute;
     align-self:center;
+    line-height: 30px;
     justify-content: space-between;
     right: 0; 
 }
 
-.logout caption {
+.logout label {
     min-width: fit-content;
-    margin-right: 10vw;
+    font-weight: lighter;
+    color: white;
+    margin-right: 20px;
 }
 
-.navbar button {
-    background-color: transparent !important;
+.logout button {
+    cursor: pointer;
+    font-size: 10px;
+    font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: lighter;
+    background-color: rgb(58, 83, 107);
+    color: #fefefe;
 }
+
+.logout button:hover {
+    transform: scale(1.05);
+    background-color: rgba(58, 83, 107, 0.5);
+}
+
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
