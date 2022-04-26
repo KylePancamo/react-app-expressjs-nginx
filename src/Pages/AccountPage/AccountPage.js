@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 function Account() {
 
+  const [runUpdate, setRunUpdate] = useState(false);
   const [accountId, setAccountId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,7 +17,6 @@ function Account() {
   const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
-
 
   let history = useHistory();
 
@@ -26,6 +26,7 @@ function Account() {
         history.push("/");
       }
       else {
+        console.log(response.data.user);
         setAccountId(response.data.user.account_id);
         setFirstName(response.data.user.first_name);
         setLastName(response.data.user.last_name);
@@ -35,8 +36,7 @@ function Account() {
         setAddress(response.data.user.address);
       }
     })
-  }, [])
-
+  }, [runUpdate]);
 
   const Update = (e) => {
     e.preventDefault();
@@ -48,17 +48,15 @@ function Account() {
       address: address,
 
     }).then((response) => {
-      if(response.data.message)
-      {
+      if(response.data.message){
         console.log(response.data.message);
       }
       else {
         window.location.reload(true);
+        setRunUpdate(true);
       }
     })
   }
-
-  console.log(firstName);
 
   return (
     <div className="AccountPage">
