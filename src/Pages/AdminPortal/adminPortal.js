@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import UpdatePage from "../UpdateProductPage/UpdateProductPage"
 import PromoCode from "../DiscountCodePage/DiscountCodePage"
 import AddProduct from "../AddProductPage/AddProductPage"
+import AdminOrders from "./adminOrders";
 
 function AdminPortal() {
 
@@ -28,9 +29,6 @@ function AdminPortal() {
 
     return (
         <div className="admin-background">
-            <div className="portal-text">
-                
-            </div>
             <div className="admin-wrapper">
                 <div className="admin-form-wrapper">
                 <h2>Admin Portal</h2>
@@ -58,6 +56,14 @@ function AdminPortal() {
                             }} />
                         </form>
                     </div>
+                    <div className="all-orders">
+                        <form>
+                            <input type="submit" value="VIEW ORDERS" onClick={(e) => {
+                                e.preventDefault();
+                                setPortalType("admin-orders")
+                            }} />
+                        </form>
+                    </div>
                 </div>
                 <div className="loaded-component">
                     {portalType == "update" &&
@@ -68,6 +74,9 @@ function AdminPortal() {
                     }
                     {portalType == "product" &&
                         <AddProduct />
+                    }
+                    {portalType == "admin-orders" &&
+                        <AdminOrders />
                     }
                 </div>
             </div>

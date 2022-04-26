@@ -11,16 +11,19 @@
   */
 
   .background-regis {
-    background-image: url('../../images/43868.jpg');
-    min-height: 100vh;
+    display: flex;
+    background-image: url('../../images/3884099.jpg');
+    width: 65vw;
+    flex-direction: column;
+    margin-left: 35vw;
     padding-top: 1px;
     background-size: cover;
-    background-position:bottom;
+    background-position: center;
     background-repeat: no-repeat;
   }
 
   .registration-wrapper {
-    height: 100%;
+    height: 55%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,14 +34,11 @@
   .registration-form-wrapper {
     display: flex;
     flex-direction: column;
-    width: 280px;
-    max-width: 80%;
-    min-width: 100px;
-    min-height: 400px;
-    padding: 20px 40px;
-    border-radius: 6px;
+    width: 25vw;
+    padding: 5px 30px;
     box-shadow: 0px 8px 36px #222;
     background: rgba(255, 255, 255, 0.7);
+    margin-right: 100vw;
   }
 
   .registration-form-wrapper>h2 {
@@ -47,7 +47,7 @@
     font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 2em;
     font-weight: lighter;
-    margin-top: 0.25em;
+    margin-top: 0.1em;
     color: #222;
     background-color: transparent;
   }
@@ -56,18 +56,6 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-  }
-
-  .info {
-    padding-bottom: 1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .registration-form-wrapper label {
-    margin-bottom: 0.5em;
-    color: #444;
-    font-weight: lighter;
   }
 
   .registration-form-wrapper input {

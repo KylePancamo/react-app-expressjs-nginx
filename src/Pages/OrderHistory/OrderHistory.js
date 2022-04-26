@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom'
 
 import {
     Link,
-  } from "react-router-dom";
+} from "react-router-dom";
 
 function OrderHistory(props) {
 
@@ -67,85 +67,96 @@ function OrderHistory(props) {
     }
 
     return (
-        <div className="order-list">
-            <div className="container">
-                <table className="tables">
-                    <caption>Item History</caption>
-                    <thead>
-                        <tr className="tr">
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('order_num')}
-                                    className={getClassNamesFor('order_num')}>
-                                    Order Id:
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('item_id')}
-                                    className={getClassNamesFor('item_id')}>
-                                    Item Id
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('item_name')}
-                                    className={getClassNamesFor('item_name')}>
-                                    Item Name
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('item_description')}
-                                    className={getClassNamesFor('item_description')}>
-                                    Item Description
-                                </button>
-                            </th>
-                            <th>
-                                <button
-                                    type="button"
-                                    onClick={() => requestSort('item_price')}
-                                    className={getClassNamesFor('item_price')}>
-                                    Item Price
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            items.map(index => {
-                                return (
-                                    <tr>
-                                        <td>{index.order_num}</td>
-                                        <td>{index.item_id}</td>
-                                        <td>{index.item_name}</td>
-                                        <td>{index.item_description}</td>
-                                        <td>{index.item_price}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                        {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) &&
-                            <Redirect to={{ alert: "Please login to view your orders!" }} />
-                        }
-                    </tbody>
-                    <tbody>
-                        {
-                            !items.length &&
-                            <>
-                                <div className="fa fa-info-circle" /> No orders have been placed
-                            </>
-                        }
-                    </tbody>
-                    <Link to="/account">Back to Account Page</Link>
-                </table>
-                
+        <div className="order-background">
+            <div className="updateproduct-wrapper">
+                <div className="updateproduct-form-item-wrapper">
+                    <h2>Item History</h2>
+                    <div className="container">
+                        <table className="tables">
+                            <thead>
+                                <tr className="tr">
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('order_num')}
+                                            className={getClassNamesFor('order_num')}>
+                                            Order Id:
+                                        </button>
+                                    </th>
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('item_id')}
+                                            className={getClassNamesFor('item_id')}>
+                                            Item Id
+                                        </button>
+                                    </th>
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('item_name')}
+                                            className={getClassNamesFor('item_name')}>
+                                            Item Name
+                                        </button>
+                                    </th>
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('item_description')}
+                                            className={getClassNamesFor('item_description')}>
+                                            Item Description
+                                        </button>
+                                    </th>
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('quantity')}
+                                            className={getClassNamesFor('quantity')}>
+                                            Quantity
+                                        </button>
+                                    </th>
+                                    <th>
+                                        <button
+                                            type="button"
+                                            onClick={() => requestSort('total_price')}
+                                            className={getClassNamesFor('total_price')}>
+                                            Total Price
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    items.map(index => {
+                                        return (
+                                            <tr>
+                                                <td>{index.order_num}</td>
+                                                <td>{index.item_id}</td>
+                                                <td>{index.item_name}</td>
+                                                <td>{index.item_description}</td>
+                                                <td>{index.quantity}</td>
+                                                <td>${index.total_price}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                                {(JSON.parse(localStorage.getItem('login')) === "false" || !JSON.parse(localStorage.getItem('login'))) &&
+                                    <Redirect to={{ alert: "Please login to view your orders!" }} />
+                                }
+                            </tbody>
+                            <tbody>
+                                {
+                                    !items.length &&
+                                    <>
+                                        <div className="fa fa-info-circle" /> No orders have been placed
+                                    </>
+                                }
+                            </tbody>
+                            <Link to="/account">Back to Account Page</Link>
+                        </table>
+                    </div>
+                </div>
             </div>
-            
         </div>
     );
 }

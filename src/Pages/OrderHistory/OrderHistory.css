@@ -1,24 +1,9 @@
-.order-list {}
-
-.order-list .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex: 21%; 
-}
-
-.order-list .tables {
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: 0px 8px 36px #222;
-    background-color: cadetblue;
-    color: white;
-    border-spacing: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    margin-left: 27%;
-}
-.order-list th {
-    text-align: center;
+.order-background {
+    background-image: url('../../images/download.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 .fa-info-circle {
