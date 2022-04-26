@@ -11,11 +11,12 @@
   */
 
   .background-regis {
-      background-color: red;
-      background-image: url('../../images/oceanimagedesktop.jpg');
-      min-height: 100vh;
-      padding-top: 1px;
-      background-size: cover;
+    background-image: url('../../images/43868.jpg');
+    min-height: 100vh;
+    padding-top: 1px;
+    background-size: cover;
+    background-position:bottom;
+    background-repeat: no-repeat;
   }
 
   .registration-wrapper {

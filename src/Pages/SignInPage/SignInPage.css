@@ -11,11 +11,12 @@
   */
 
   .background-login {
-    background-color: red;
-    background-image: url('../../images/oceanimagedesktop.jpg');
+    background-image: url('../../images/43868.jpg');
     min-height: 100vh;
     padding-top: 1px;
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .signin-wrapper {

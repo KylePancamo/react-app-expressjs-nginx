@@ -1,10 +1,8 @@
 .HomePage {
   min-width: fit-content;
   min-height: 100vh;
-  background-color: rgb(211, 254, 255);
+  background-color: rgba(95, 148, 180, 0.638);
   font-family: 'Times New Roman', Times, serif;
-  margin: 0;
-  padding: 0;
 }
 
 .row {
@@ -14,22 +12,20 @@
   flex: 1 0 21%;
 }
 
-.HomeHeader header {
+.HomeHeader {
   background-image: url(../../images/oceanimagedesktop.jpg);
   background-position: center;
+  background-repeat: no-repeat;
   padding: 10%;
-  font-size: x-large;
 }
 
 .HomePage h2 {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
-  background-color:crimson;
   color: black;
   font-size: large;
   margin: none;
   border-radius: none;
-  padding: 1%;
+  margin-bottom: 5vh;
 }
 
 h3 {
@@ -57,6 +53,7 @@ h3 {
 .wrapper {
   flex-basis: 33.3333%;
   margin-top: 1vw;
+  color: white
 }
 
 .wrapper img {
@@ -90,8 +87,22 @@ h3 {
 
 .product-view-button {
   margin-top: 5px;
-  background-color:aqua;
+  background-color: aqua;
   color: green;
-  font-weight:650;
+  font-weight: 650;
   border-radius: 1.5px;
+}
+
+.DoD {
+  background-image: url("../../images/water.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -5vh;
+}
+
+.head {
+  font-size: xx-large;
+  text-align: center;
+  margin-top: -20vh;
 }
