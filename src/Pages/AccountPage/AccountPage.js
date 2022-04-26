@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 function Account() {
 
-  const [runUpdate, setRunUpdate] = useState(false);
   const [accountId, setAccountId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -36,7 +35,7 @@ function Account() {
         setAddress(response.data.user.address);
       }
     })
-  }, [runUpdate]);
+  }, []);
 
   const Update = (e) => {
     e.preventDefault();
@@ -48,67 +47,67 @@ function Account() {
       address: address,
 
     }).then((response) => {
-      if(response.data.message){
+      if (response.data.message) {
         console.log(response.data.message);
       }
       else {
         window.location.reload(true);
-        setRunUpdate(true);
       }
     })
   }
 
   return (
-    <div className="AccountPage">
-      <div className="container">
-        <div className="title">Profile</div>
-        <div className="content">
-          <form action="#">
-            <div className="user-details">
-              <div className="input-box">
-                <span className="details"><strong>First Name</strong></span>
-                <input type="text" value={firstName} onChange={(event) => {
-                  setFirstName(event.target.value)
-                }}></input>
+    <div className="account-background">
+      <div className="AccountPage">
+        <div className="container">
+          <div className="title">Profile</div>
+          <div className="content">
+            <form action="#">
+              <div className="user-details">
+                <div className="input-box">
+                  <span className="details"><strong>First Name</strong></span>
+                  <input type="text" value={firstName} onChange={(event) => {
+                    setFirstName(event.target.value)
+                  }}></input>
+                </div>
+                <div className="input-box">
+                  <span className="details"><strong>Last Name</strong></span>
+                  <input type="text" value={lastName} onChange={(event) => {
+                    setLastName(event.target.value)
+                  }}></input>
+                </div>
+                <div className="input-box">
+                  <span className="details"><strong>Username</strong></span>
+                  <input type="text" value={username} disabled ></input>
+                </div>
+                <div className="input-box">
+                  <span className="details"><strong>Email</strong></span>
+                  <input type="text" value={email} disabled ></input>
+                </div>
+                <div className="input-box">
+                  <span className="details"> <strong>Phone Number</strong></span>
+                  <input type="text" value={phoneNum} onChange={(event) => {
+                    setPhoneNum(event.target.value)
+                  }}></input>
+                </div>
+                <div className="input-box">
+                  <span className="details"><strong>Address</strong></span>
+                  <input type="text" value={address} onChange={(event) => {
+                    setAddress(event.target.value);
+                  }}></input>
+                </div>
               </div>
-              <div className="input-box">
-                <span className="details"><strong>Last Name</strong></span>
-                <input type="text" value={lastName} onChange={(event) => {
-                  setLastName(event.target.value)
-                }}></input>
+              <div className="Update">
+                <button onClick={Update}>
+                  Update
+                </button>
               </div>
-              <div className="input-box">
-                <span className="details"><strong>Username</strong></span>
-                <input type="text" value={username} disabled ></input>
-              </div>
-              <div className="input-box">
-                <span className="details"><strong>Email</strong></span>
-                <input type="text" value={email} disabled ></input>
-              </div>
-              <div className="input-box">
-                <span className="details"> <strong>Phone Number</strong></span>
-                <input type="text" value={phoneNum} onChange={(event) => {
-                  setPhoneNum(event.target.value)
-                }}></input>
-              </div>
-              <div className="input-box">
-                <span className="details"><strong>Address</strong></span>
-                <input type="text" value={address} onChange={(event) => {
-                  setAddress(event.target.value);
-                }}></input>
-              </div>
-            </div>
-            <div className="Update">
-              <button onClick={Update}>
-                Update
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
+          <Link to="/order-history">View Order History</Link>
         </div>
-        <Link to="/order-history">View Order History</Link>
       </div>
     </div>
-
   );
 }
 

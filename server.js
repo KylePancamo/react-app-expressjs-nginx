@@ -490,7 +490,14 @@ app.post("/update-user", (req, res) => {
                         if (err) {
                             res.send({ message: "Error: User information failed to update" })
                         } else {
-                            res.status(200).send("Success");
+                            db.query(
+                                "SELECT * FROM account WHERE account_id = ?",
+                                accountId,
+                                (err, result) => {
+                                    req.session.user = result[0];
+                                    res.send({ loggedIn: true, user: req.session.user })
+                                }
+                            )
                         }
                     }
                 );
@@ -500,7 +507,7 @@ app.post("/update-user", (req, res) => {
 
 })
 
-app.post("/delete-discount",  (req, res) => {
+app.post("/delete-discount", (req, res) => {
     db.query(
         `DELETE FROM discounts WHERE discount_code = ?;`,
         req.body.data,
