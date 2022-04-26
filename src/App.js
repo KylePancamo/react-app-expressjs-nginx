@@ -102,7 +102,7 @@ function App() {
           </div>
           {JSON.parse(localStorage.getItem('login')) === "true" &&
             <div className="logout">
-              <label>Howdy, {userInfo.last_name}</label>
+              <label>Howdy, {userInfo.first_name}</label>
               <button onClick={logout}>LOG OUT</button>
             </div>
 
